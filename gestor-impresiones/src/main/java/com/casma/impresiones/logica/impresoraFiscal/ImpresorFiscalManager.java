@@ -7,11 +7,9 @@ package com.casma.impresiones.logica.impresoraFiscal;
 import IFDrivers.HasarTick;
 import com.casma.impresiones.entidades.*;
 import com.casma.impresiones.logica.propiedades.Utiles;
-import com.casma.impresiones.logica.utiles.CryptoUtils;
 import com.casma.impresiones.logica.utiles.JsonConverter;
 import com.casma.slingr.Json;
-import com.casma.slingr.SlingrClient;
-import com.casma.slingr.SlingrManager;
+import com.casma.slingr.PlatformManager;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -30,15 +28,10 @@ public class ImpresorFiscalManager {
     private HasarTick IPrinter;
     private static String SERIAL_PORT = "COM1"; // TODO: manejar como param
     private static int VELOCIDAD_PUERTO = 9600;
-    private boolean driverInicializado;
 
     private final static String PARAMETRO_DISPLAY_COMPROBANTE_NO_FISCAL = "0";
 
     private final ReentrantLock imprimirFacturaLock = new ReentrantLock();
-
-    private SlingrClient slingrClient;
-
-    private boolean mockDriver = false;
 
     // datos comercio
     private String puntoDeVenta;
@@ -46,7 +39,6 @@ public class ImpresorFiscalManager {
     private ImpresorFiscalManager() {
         try {
             IPrinter = new HasarTick();
-            driverInicializado = true;
         } catch (Throwable e) {
             logger.error("Driver de impresora no pudo ser inicializado", e);
         }
@@ -62,10 +54,7 @@ public class ImpresorFiscalManager {
     // manejo impresora
 
     public void iniciarImpresora() throws Exception {
-        if (!driverInicializado) {
-            logger.error("Driver de impresora no ha sido inicializado");
-            return;
-        }
+        chequearConexionImpresora();
 
         logger.info("Iniciando conexion con impresora");
         IPrinter.setSerial();
@@ -79,6 +68,8 @@ public class ImpresorFiscalManager {
     }
 
     public void cerrarImpresora() {
+        chequearConexionImpresora();
+
         logger.info("Cerrando conexion con impresora");
         IPrinter.IF_CLOSE();
         logger.info("Impresora cerrada correctamente");
@@ -114,24 +105,36 @@ public class ImpresorFiscalManager {
             logger.error("No se pudo realizar impresion", e);
             throw e;
         } finally {
-            if (!cerrarFactura()) {
-                cancelarDocumentoActual();
+            try {
+                if (!cerrarFactura()) {
+                    cancelarDocumentoActual();
+                }
+            } catch (Exception e) {
+                logger.error("No se pudo cerrar comprobante", e);
             }
             imprimirFacturaLock.unlock();
         }
     }
 
     private void cancelarDocumentoActual() {
+        chequearConexionImpresora();
+
         logger.info("Cancelando documento...");
-        int nError = IPrinter.Sincro();
-        if (nError != 0) {
-            logger.error("No se pudo cancelar documento actual");
-        } else {
-            logger.info("Documento cancelado correctamente");
+        try {
+            int nError = IPrinter.Sincro();
+            if (nError != 0) {
+                logger.error("No se pudo cancelar documento actual");
+            } else {
+                logger.info("Documento cancelado correctamente");
+            }
+        } catch (Exception e) {
+            logger.error("No se pudo cancelar documento actual", e);
         }
     }
 
     private void abrirFactura(Factura factura) throws Exception {
+        chequearConexionImpresora();
+
         logger.info("Abrir factura " + factura.getTipoFactura());
         String valorFijo = "T";// ?
         int nError = IPrinter.OpenFiscalReceipt(factura.getTipoFactura(), valorFijo);
@@ -147,14 +150,18 @@ public class ImpresorFiscalManager {
     }
 
     private void imprimirDetalle(DetalleLinea linea) throws Exception {
+        chequearConexionImpresora();
+
         logger.info("Imprimir linea detalle " + JsonConverter.objectToString(linea));
         int nError = IPrinter.PrintLineItem(linea.getDescripcion(true), linea.getCantidad(), linea.getPrecioUnitario(), linea.getPorcentajeIva(), linea.getCalificadorOperacion(), linea.getImpuestosInternos(), linea.getParametroDisplay(), linea.getPrecioBase());
         if (nError != 0) {
-            throw new Exception("Error al agregar detalle factura");
+            throw new Exception("Error al agregar detalle factura para linea: " + linea.getDescripcion());
         }
     }
 
     private void agregarSubtotal() throws Exception {
+        chequearConexionImpresora();
+
         String parametroImpresion = "P";
         String reservado = "Subtotal";
         String parametroDisplay = "0";
@@ -165,13 +172,15 @@ public class ImpresorFiscalManager {
     }
 
     private void agregarTotal(Factura factura) throws Exception {
+        chequearConexionImpresora();
+
         String formaPago = "Efectivo";
         String calificadorOperacion = "T";
         String parametroDisplay = "0";
 
         int nError = IPrinter.TotalTender(formaPago, factura.getTotal(), calificadorOperacion, parametroDisplay);
         if (nError != 0) {
-            throw new Exception("Error al agregar total a factura");
+            throw new Exception("Error al agregar total a factura. Total: " + factura.getTotal());
         }
     }
 
@@ -192,13 +201,18 @@ public class ImpresorFiscalManager {
     }
 
     private boolean cerrarFactura() {
-        if (!driverInicializado) {
+        if (IPrinter == null) {
             logger.error("Driver de impresora no ha sido inicializado");
             return false;
         }
-        boolean facturaCerrada = IPrinter.CloseFiscalReceipt() == 0;
-        if (!facturaCerrada) {
-            logger.error("Error al cerrar factura");
+        boolean facturaCerrada = false;
+        try {
+            facturaCerrada = IPrinter.CloseFiscalReceipt() == 0;
+            if (!facturaCerrada) {
+                logger.error("Error al cerrar factura");
+            }
+        } catch (Exception e) {
+            logger.error("Error al cerrar factura", e);
         }
         return facturaCerrada;
     }
@@ -234,6 +248,8 @@ public class ImpresorFiscalManager {
     }
 
     private void relactionarFactura(NotaFiscal notaFiscal) throws Exception {
+        chequearConexionImpresora();
+
         // Cargar la información de la factura que origina esta nota de crédito
         int nError = IPrinter.SetEmbarkNumber(Integer.toString(1), notaFiscal.getFactura().getNumeroFactura());
         if (nError != 0) {
@@ -242,6 +258,8 @@ public class ImpresorFiscalManager {
     }
 
     private void abrirNotaCredito(NotaFiscal notaFiscal) throws Exception {
+        chequearConexionImpresora();
+
         // Cargar la información de la factura que origina esta nota de crédito
         int nError = IPrinter.OpenDNFH(notaFiscal.getTipoDocumento(), "T");
         if (nError != 0) {
@@ -260,6 +278,8 @@ public class ImpresorFiscalManager {
     }
 
     private void cerrarNotaCredito() throws Exception {
+        chequearConexionImpresora();
+
         // Cargar la información de la factura que origina esta nota de crédito
         int nError = IPrinter.CloseDNFH();
         if (nError != 0) {
@@ -297,6 +317,8 @@ public class ImpresorFiscalManager {
     }
 
     private void abrirNotaDebito(NotaFiscal NotaFiscal) throws Exception {
+        chequearConexionImpresora();
+
         // Cargar la información de la factura que origina esta nota de crédito
         int nError = IPrinter.OpenDNFH(NotaFiscal.getTipoDocumento(), "T");
         if (nError != 0) {
@@ -309,6 +331,8 @@ public class ImpresorFiscalManager {
     }
 
     private void cerrarNotaDebito() throws Exception {
+        chequearConexionImpresora();
+
         // Cargar la información de la factura que origina esta nota de crédito
         int nError = IPrinter.CloseFiscalReceipt();
         if (nError != 0) {
@@ -319,10 +343,12 @@ public class ImpresorFiscalManager {
     // comun comprobantes
 
     private void setDatosComprador(Comprador comprador) throws Exception {
+        chequearConexionImpresora();
+
         logger.info("Seteando datos comprador " + JsonConverter.objectToString(comprador));
         int nError = IPrinter.SetCustomerData(comprador.getNombre(), comprador.getCuit(), comprador.getResponsabilidadIva(), comprador.getTipoDocumento(), comprador.getDomicilioComercial());
         if (nError != 0) {
-            throw new Exception("Error al configurar datos comprador");
+            throw new Exception("Error al configurar datos comprador. Por favor verificar CUIT o caracteres especiales en el nombre del comprador.");
         }
     }
 
@@ -354,6 +380,8 @@ public class ImpresorFiscalManager {
     }
 
     private void abrirComprobanteNoFiscal() throws Exception {
+        chequearConexionImpresora();
+
         int nError = IPrinter.OpenNonFiscalReceipt();
         if (nError != 0) {
             throw new Exception("Error al abrir comprobante no fiscal");
@@ -361,6 +389,8 @@ public class ImpresorFiscalManager {
     }
 
     private void agregarDetalleComprobanteNoFiscal(String lineaComprobanteNoFiscal) throws Exception {
+        chequearConexionImpresora();
+
         String linea = Utiles.parseString(lineaComprobanteNoFiscal);
         if (linea.length() > 40) {
             linea = linea.substring(0, 40);
@@ -372,6 +402,8 @@ public class ImpresorFiscalManager {
     }
 
     private void cerrarComprobanteNoFiscal() {
+        chequearConexionImpresora();
+
         int nError = IPrinter.CloseNonFiscalReceipt();
         if (nError != 0) {
             logger.error("Error al cerrar comprobante no fiscal");
@@ -379,6 +411,8 @@ public class ImpresorFiscalManager {
     }
 
     private void obtenerNumeroSucursal() {
+        chequearConexionImpresora();
+
         int nErrorInitData = IPrinter.GetInitData();
         if (nErrorInitData != 0) {
             logger.error("Error al consultar init data!");
@@ -390,10 +424,14 @@ public class ImpresorFiscalManager {
     // comandos genericos
 
     public String leerRespuestaComando(int numeroCampo) throws Exception {
+        chequearConexionImpresora();
+
         return IPrinter.IF_READ(numeroCampo);
     }
 
     public int ejecutarComando(String comando) throws Exception {
+        chequearConexionImpresora();
+
         int nError = IPrinter.IF_WRITE(comando);
         if (nError != 0) {
             throw new Exception("Error al ejecutar comando de impresora.");
@@ -404,6 +442,8 @@ public class ImpresorFiscalManager {
     // estado impresora
 
     private void pedirEstado() throws Exception {
+        chequearConexionImpresora();
+
         int nError = IPrinter.StatusRequest();
         if (nError != 0) {
             throw new Exception("Error al obtener estado impresora");
@@ -416,11 +456,18 @@ public class ImpresorFiscalManager {
         Json paylod = Json.map();
         paylod.set(numeroField, numero);
         try {
-            return SlingrManager.getInstance().actualizarNumero(url, paylod);
+            return PlatformManager.getInstance().actualizarNumero(url, paylod);
         } catch (Exception e) {
             logger.error("No se pudo actualizar numero en servidor", e);
+            throw new RuntimeException("No se pudo actualizar numero de comprobante en servidor");
         }
-        return null;
+    }
+
+    private void chequearConexionImpresora() {
+        if (IPrinter == null) {
+            logger.error("Driver de impresora no ha sido inicializado");
+            throw new RuntimeException("Driver de impresora no ha sido inicializado");
+        }
     }
 
 

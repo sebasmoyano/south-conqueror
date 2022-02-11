@@ -30,7 +30,6 @@ public class FacturasControlador {
     @Produces(MediaType.APPLICATION_JSON)
     public Response imprimirFactura(Factura factura) {
         logger.info(String.format("Recibido request para imprimir factura [%s]", JsonConverter.objectToString(factura)));
-
         ResponseError error = validarFactura(factura);
         if (error != null) {
             logger.error("Se encontraron errores de validacion de factura " + error.convertirAJson());

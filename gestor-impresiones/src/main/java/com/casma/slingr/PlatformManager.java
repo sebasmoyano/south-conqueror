@@ -3,16 +3,9 @@ package com.casma.slingr;
 import com.casma.impresiones.logica.Contexto;
 import com.casma.impresiones.logica.utiles.CryptoUtils;
 
-import javax.ws.rs.client.WebTarget;
+public class PlatformManager {
 
-/**
- * Provides access to the services in the app runtime.
- *
- * Created by dgaviola on 18/9/15.
- */
-public class SlingrManager {
-
-    private static SlingrManager instance;
+    private static PlatformManager instance;
 
     private SlingrClient client;
 
@@ -28,13 +21,13 @@ public class SlingrManager {
     private static String MICA_USER = "system@mica.slingrs.io";
     private static String MICA_KEY = "RUm7o2PAhkf1aS56y+BB7XLp/FUlIqwVaBq/DWFs7I3vKJhAHaSy3imXryybnr7wowYGISve74VAjk6MvjrKnXXL7gQwAIie3gFX4mZYHHA=";
 
-    private SlingrManager() {
+    private PlatformManager() {
         iniciarCliente();
     }
 
-    public synchronized static SlingrManager getInstance() {
+    public synchronized static PlatformManager getInstance() {
         if (instance == null) {
-            instance = new SlingrManager();
+            instance = new PlatformManager();
         }
         return instance;
     }

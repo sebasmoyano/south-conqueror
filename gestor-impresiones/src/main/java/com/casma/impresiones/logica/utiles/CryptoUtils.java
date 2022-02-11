@@ -16,10 +16,6 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
-/**
- * User: fmilone
- * Date: 9/23/13
- */
 public class CryptoUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(CryptoUtils.class);
