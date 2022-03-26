@@ -169,7 +169,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.casma.impresiones.Main</mainClass>
+                            <mainClass>com.southconqueror.impresiones.Main</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Class-Path>.</Class-Path>
