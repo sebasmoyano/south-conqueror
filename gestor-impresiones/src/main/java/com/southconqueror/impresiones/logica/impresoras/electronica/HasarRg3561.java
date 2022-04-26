@@ -52,13 +52,13 @@ public class HasarRg3561 implements ImpresoraFiscal {
         impresora.addFiscalListener(new HasarRg3561EventoFiscalListener());
         impresora.addFiscalListener(new HasarRg3561EventoImpresoraListener());
         final String ipImpresora = AppProperties.getInstance().getIpImpresoraFiscal();
+        logger.info(String.format("Conectando a IP [%s]", ipImpresora));
         impresora.conectar(ipImpresora, 80);
     }
 
     @Override
     public String imprimirFactura(Factura factura) throws Exception {
         logger.info("Realizando impresion de comprobante " + JsonConverter.objectToString(factura));
-
         imprimirFacturaLock.lock();
         try {
             cargarDatosCliente(factura.getComprador());
@@ -66,7 +66,6 @@ public class HasarRg3561 implements ImpresoraFiscal {
             agregarDetallesFactura(factura.getDetalle());
             agregarSubtotal();
             agregarTotal(factura);
-
             logger.info(String.format("Comprobante generado [%s]", nroComprobante));
             if (StringUtils.isBlank(nroComprobante)) {
                 logger.error("La impresión se realizó correctamente pero no se pudo obtener el número de comprobante generado");
