@@ -1,12 +1,12 @@
 package com.southconqueror.impresiones;
 
 import com.southconqueror.impresiones.logica.Contexto;
-import com.southconqueror.impresiones.logica.impresoraFiscal.ImpresorFiscalManager;
+import com.southconqueror.impresiones.logica.impresoras.serial.HasarSerial;
 import com.southconqueror.impresiones.serviciosweb.comprobantes.*;
 import com.southconqueror.impresiones.serviciosweb.estacionamiento.TicketsEstacionamientoControlador;
 import com.southconqueror.impresiones.serviciosweb.filters.ResponseCorsFilter;
 import com.southconqueror.impresiones.serviciosweb.rotonda.FormulariosGobiernoControlador;
-import com.southconqueror.utils.AppProperties;
+import com.southconqueror.impresiones.logica.utils.AppProperties;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -73,7 +73,7 @@ public class Main {
 
     private static void iniciarImpresora() {
         try {
-            ImpresorFiscalManager.getInstance().iniciarImpresora();
+            HasarSerial.getInstance().configurar();
         } catch (Exception e) {
             logger.error("Error al inicializar impresora", e);
             logger.info("Iniciando como impresora PDF");

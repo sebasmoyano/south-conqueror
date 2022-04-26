@@ -41,7 +41,7 @@
 //
 package IFDrivers;
 
-import com.southconqueror.utils.AppProperties;
+import com.southconqueror.impresiones.logica.utils.AppProperties;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 

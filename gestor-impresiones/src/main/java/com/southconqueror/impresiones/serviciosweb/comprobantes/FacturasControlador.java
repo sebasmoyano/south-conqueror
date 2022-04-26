@@ -5,7 +5,7 @@ import com.southconqueror.impresiones.entidades.Factura;
 import com.southconqueror.impresiones.entidades.DetalleLinea;
 import com.southconqueror.impresiones.entidades.TipoFactura;
 import com.southconqueror.impresiones.logica.comprobantes.FacturasManager;
-import com.southconqueror.impresiones.logica.impresoraFiscal.ImpresorFiscalManager;
+import com.southconqueror.impresiones.logica.impresoras.serial.HasarSerial;
 import com.southconqueror.impresiones.logica.utiles.JsonConverter;
 import com.southconqueror.impresiones.serviciosweb.ResponseError;
 import org.apache.commons.lang.StringUtils;
@@ -36,7 +36,7 @@ public class FacturasControlador {
             return Response.status(error.getStatus()).entity(error.convertirAJson()).build();
         }
         try {
-            String nroComprobante = ImpresorFiscalManager.getInstance().imprimirFactura(factura);
+            String nroComprobante = HasarSerial.getInstance().imprimirFactura(factura);
             return Response
                     .status(Response.Status.OK)
                     .entity("{\"numeroComprobante\": \"" + nroComprobante + "\"}").build();
@@ -79,7 +79,7 @@ public class FacturasControlador {
         logger.info("Recibido request para obtener ultimo nro de factura");
 
         try {
-            String ultimoNumero = ImpresorFiscalManager.getInstance().getUltimoNumeroFactura(tipoFactura);
+            String ultimoNumero = HasarSerial.getInstance().getUltimoNumeroFactura(tipoFactura);
             return Response
                     .status(Response.Status.OK)
                     .entity("{\"ultimoNumero\": \"" + ultimoNumero + "\"}").build();

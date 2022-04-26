@@ -2,7 +2,7 @@ package com.southconqueror.impresiones.serviciosweb.comprobantes;
 
 import com.southconqueror.impresiones.entidades.*;
 import com.southconqueror.impresiones.logica.comprobantes.NotasManager;
-import com.southconqueror.impresiones.logica.impresoraFiscal.ImpresorFiscalManager;
+import com.southconqueror.impresiones.logica.impresoras.serial.HasarSerial;
 import com.southconqueror.impresiones.logica.utiles.JsonConverter;
 import com.southconqueror.impresiones.serviciosweb.ResponseError;
 import org.apache.log4j.LogManager;
@@ -36,10 +36,10 @@ public class NotasControlador {
             String nroComprobante = null;
             switch (notaFiscal.getTipo()) {
                 case CREDITO:
-                    nroComprobante = ImpresorFiscalManager.getInstance().imprimirNotaCredito(notaFiscal);
+                    nroComprobante = HasarSerial.getInstance().imprimirNotaCredito(notaFiscal);
                     break;
                 case DEBITO:
-                    nroComprobante = ImpresorFiscalManager.getInstance().imprimirNotaDebito(notaFiscal);
+                    nroComprobante = HasarSerial.getInstance().imprimirNotaDebito(notaFiscal);
                     break;
             }
             return Response
