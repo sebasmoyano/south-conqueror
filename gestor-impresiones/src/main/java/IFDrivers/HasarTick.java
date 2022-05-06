@@ -41,69 +41,57 @@
 //
 package IFDrivers;
 
-import com.southconqueror.impresiones.logica.utils.AppProperties;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-
 /**
+ *
  * @author Marcelo
  */
-public class HasarTick {
-
-    private static Logger logger = LogManager.getLogger(HasarTick.class);
-
+public class HasarTick
+{
     /**
      * Abrir el puerto de comunicaciones
-     *
-     * @param strPort Puerto de comunicaciones
-     * @param nSpeed  Velocidad del puerto
-     * @return 0 si no hay error, -1 si se produjo un error
+     * @param    strPort    Puerto de comunicaciones
+     * @param    nSpeed   Velocidad del puerto
+     * @return     0 si no hay error, -1 si se produjo un error
      */
     public native int IF_OPEN(String strPort, int nSpeed);
 
     /**
-     * Cerrar el puerto de comunicaciones
-     *
-     * @return 0 si no hay error, -1 si se produjo un error
+     *  Cerrar el puerto de comunicaciones
+     * @return     0 si no hay error, -1 si se produjo un error
      */
     public native int IF_CLOSE();
 
     /**
-     * Leer un campo de la respuesta del controlador fiscal
-     *
-     * @param nField Nro del campo de la respuesta fiscal a recuperar
-     * @return El valor del campo
+     *  Leer un campo de la respuesta del controlador fiscal
+     * @param    nField    Nro del campo de la respuesta fiscal a recuperar
+     * @return     El valor del campo
      */
     public native String IF_READ(int nField);
 
     /**
-     * Enviar un comando a la impresora fiscal
-     *
-     * @param strCommand Comando a enviar
-     * @return 0 si no hay error, -1 si se produjo un error
+     *  Enviar un comando a la impresora fiscal
+     * @param    strCommand    Comando a enviar
+     * @return     0 si no hay error, -1 si se produjo un error
      */
     public native int IF_WRITE(String strCommand);
 
     /**
-     * Leer el c�digo de estado del mecanismo impresor
-     *
-     * @param nBit Nro del bit a leer (1 a 16)
-     * @return 1 si esta en On, 0 si esta en Off
+     *  Leer el c�digo de estado del mecanismo impresor
+     * @param    nBit    Nro del bit a leer (1 a 16)
+     * @return     1 si esta en On, 0 si esta en Off
      */
     public native int IF_ERROR1(int nBit);
 
     /**
-     * Leer el c�digo de estado del controlador fiscal
-     *
-     * @param nBit Nro del bit a leer (1 a 16)
-     * @return 1 si esta en On, 0 si esta en Off
+     *  Leer el c�digo de estado del controlador fiscal
+     * @param    nBit    Nro del bit a leer (1 a 16)
+     * @return     1 si esta en On, 0 si esta en Off
      */
     public native int IF_ERROR2(int nBit);
 
     /**
-     * Habilitar o deshabilitar la depuraci�n de comandos
-     *
-     * @param nTrace 1 para habilitar, 0 para deshabilitar la depuracion
+     *  Habilitar o deshabilitar la depuraci�n de comandos
+     * @param    nTrace   1 para habilitar, 0 para deshabilitar la depuracion
      */
     public native void IF_TRACE(int nTrace);
 
@@ -111,37 +99,28 @@ public class HasarTick {
 
     private final static String SERIAL_ID = "27-0163848-435";
 
-    private final static String DEFAULT_PRINTER_DLL = "H71532Jv";
-    private final static String PRINTER_250F_DLL = "h25032Jv";
-
-    public static void cargarLibreriaNativa() {
-        if (AppProperties.getInstance().getModeloImpresora().contains("250F")) {
-            logger.info("Cargando DLL para modelo [250F]");
-            System.loadLibrary(PRINTER_250F_DLL);
-        } else {
-            logger.info("Cargando DLL para modelo [default]");
-            System.loadLibrary(DEFAULT_PRINTER_DLL);
-        }
+    static
+    {
+        System.loadLibrary("H71532Jv");
     }
 
     //***************************************************************
     // 1. Comandos de inicializaci�n
-
     /**
      * Configuraci�n del controlador en bloque
-     *
-     * @param dblVar1 L�mite de ingreso datos consumidor (nnnnnn.nn)
-     * @param dblVar2 L�mite ticket factura (nnnnnn.nn)
-     * @param dblVar3 Porcentaje IVA responsable inscripto (nn.nn)
-     * @param byVar4  Cantidad de copias
-     * @param byVar5  Impresi�n CAMBIO {PO}
-     * @param byVar6  Impresion leyendas opcionales {PO}
-     * @param byVar7  Tipo de corte del papel de ticket {FPN}
+     * @param	dblVar1	L�mite de ingreso datos consumidor (nnnnnn.nn)
+     * @param	dblVar2	L�mite ticket factura (nnnnnn.nn)
+     * @param	dblVar3	Porcentaje IVA responsable inscripto (nn.nn)
+     * @param	byVar4	Cantidad de copias
+     * @param	byVar5	Impresi�n CAMBIO {PO}
+     * @param	byVar6	Impresion leyendas opcionales {PO}
+     * @param	byVar7	Tipo de corte del papel de ticket {FPN}
      * @return 0 si no hay error y != 0 si hay un error
      */
     public int ConfigureControllerByBlock(Double dblVar1, Double dblVar2, Double dblVar3,
                                           String byVar4, String byVar5,
-                                          String byVar6, String byVar7) {
+                                          String byVar6, String byVar7)
+    {
         setSerial();
 
         String strBuff = "@ConfigureControllerByBlock" + "|" + dblVar1.toString() + "|" +
@@ -155,12 +134,12 @@ public class HasarTick {
 
     /**
      * Config del controlador por par�metros
-     *
-     * @param byVar1  Par�metro a modificar {456}
-     * @param strVar2 Valor del par�metro
+     * @param	byVar1	Par�metro a modificar {456}
+     * @param	strVar2	Valor del par�metro
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int ConfigureControllerByOne(String byVar1, String strVar2) {
+    public int ConfigureControllerByOne(String byVar1, String strVar2)
+    {
         setSerial();
 
         String strBuff = "@ConfigureControllerByOne" + "|" + byVar1 + "|" + strVar2;
@@ -172,11 +151,11 @@ public class HasarTick {
 
     /**
      * Cambio de responsabilidad frente al IVA
-     *
-     * @param byVar1 Responsabilidad frente al IVA {INEAMS}
+     * @param	byVar1	Responsabilidad frente al IVA {INEAMS}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int ChangeIVAResponsability(String byVar1) {
+    public int ChangeIVAResponsability(String byVar1)
+    {
         setSerial();
 
         String strBuff = "@ChangeIVAResponsability" + "|" + byVar1;
@@ -188,11 +167,11 @@ public class HasarTick {
 
     /**
      * Cambio de nro de ingresos brutos
-     *
-     * @param strVar1 Nro de ingresos brutos (max 20 bytes)
+     * @param	strVar1	Nro de ingresos brutos (max 20 bytes)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int ChangeIBNumber(String strVar1) {
+    public int ChangeIBNumber(String strVar1)
+    {
         setSerial();
 
         String strBuff = "@ChangeIBNumber" + "|" + strVar1;
@@ -204,13 +183,12 @@ public class HasarTick {
 
     //***************************************************************
     // 2. Comandos de diagn�stico
-
     /**
      * Consulta de estado
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int StatusRequest() {
+    public int StatusRequest()
+    {
         setSerial();
 
         String strBuff = "@StatusRequest";
@@ -222,10 +200,10 @@ public class HasarTick {
 
     /**
      * Consulta de configuraci�n
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int GetConfigurationData() {
+    public int GetConfigurationData()
+    {
         setSerial();
 
         String strBuff = "@GetConfigurationData";
@@ -237,10 +215,10 @@ public class HasarTick {
 
     /**
      * Consulta de datos de inicializaci�n
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int GetInitData() {
+    public int GetInitData()
+    {
         setSerial();
 
         String strBuff = "@GetInitData";
@@ -252,10 +230,10 @@ public class HasarTick {
 
     /**
      * Consulta de versi�n de controlador fiscal
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int GetPrinterVersion() {
+    public int GetPrinterVersion()
+    {
         setSerial();
 
         String strBuff = "@GetPrinterVersion";
@@ -267,13 +245,12 @@ public class HasarTick {
 
     //***************************************************************
     // 3. Comandos de control fiscal
-
     /**
      * Capacidad restante
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int HistoryCapacity() {
+    public int HistoryCapacity()
+    {
         setSerial();
 
         String strBuff = "@HistoryCapacity";
@@ -285,11 +262,11 @@ public class HasarTick {
 
     /**
      * Cierre de jornada fiscal
-     *
-     * @param byVar1 Z: Cierre de jornada fiscal; X: Informe X {XZ}
+     * @param	byVar1	Z: Cierre de jornada fiscal; X: Informe X {XZ}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int DailyClose(String byVar1) {
+    public int DailyClose(String byVar1)
+    {
         setSerial();
 
         String strBuff = "@DailyClose" + "|" + byVar1;
@@ -301,13 +278,13 @@ public class HasarTick {
 
     /**
      * Reporte de auditoria por fechas
-     *
-     * @param strVar1 Fecha inicial del per�odo (formato AAMMDD) (max 6 bytes)
-     * @param strVar2 Fecha final del per�odo (formato AAMMDD) (max 6 bytes)
-     * @param byVar3  T: datos globales; otro caracter: datos por Z {TO}
+     * @param	strVar1	Fecha inicial del per�odo (formato AAMMDD) (max 6 bytes)
+     * @param	strVar2	Fecha final del per�odo (formato AAMMDD) (max 6 bytes)
+     * @param	byVar3	T: datos globales; otro caracter: datos por Z {TO}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int DailyCloseByDate(String strVar1, String strVar2, String byVar3) {
+    public int DailyCloseByDate(String strVar1, String strVar2, String byVar3)
+    {
         setSerial();
 
         String strBuff = "@DailyCloseByDate" + "|" + strVar1 + "|" + strVar2 + "|" +
@@ -320,13 +297,13 @@ public class HasarTick {
 
     /**
      * Reporte de auditoria por n�mero de Z
-     *
-     * @param nVar1  N�mero de Z inicial del per�odo (nnnn)
-     * @param nVar2  N�mero de Z final del per�odo (nnnn)
-     * @param byVar3 T: datos globales; otro caracter: datos por Z {TO}
+     * @param	nVar1	N�mero de Z inicial del per�odo (nnnn)
+     * @param	nVar2	N�mero de Z final del per�odo (nnnn)
+     * @param	byVar3	T: datos globales; otro caracter: datos por Z {TO}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int DailyCloseByNumber(Integer nVar1, Integer nVar2, String byVar3) {
+    public int DailyCloseByNumber(Integer nVar1, Integer nVar2, String byVar3)
+    {
         setSerial();
 
         String strBuff = "@DailyCloseByNumber" + "|" + nVar1.toString() + "|" + nVar2.toString() + "|" +
@@ -339,12 +316,12 @@ public class HasarTick {
 
     /**
      * Reporte de registro diario
-     *
-     * @param strVar1 N�mero de Z o fecha (campo de longitud variable) (max 6 bytes)
-     * @param byVar2  Z: n�mero de Z; T: fecha {ZT}
+     * @param	strVar1	N�mero de Z o fecha (campo de longitud variable) (max 6 bytes)
+     * @param	byVar2	Z: n�mero de Z; T: fecha {ZT}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int GetDailyReport(String strVar1, String byVar2) {
+    public int GetDailyReport(String strVar1, String byVar2)
+    {
         setSerial();
 
         String strBuff = "@GetDailyReport" + "|" + strVar1 + "|" + byVar2;
@@ -356,10 +333,10 @@ public class HasarTick {
 
     /**
      * Consulta de memoria de trabajo
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int GetWorkingMemory() {
+    public int GetWorkingMemory()
+    {
         setSerial();
 
         String strBuff = "@GetWorkingMemory";
@@ -371,10 +348,10 @@ public class HasarTick {
 
     /**
      * Iniciar informaci�n de IVA
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int SendFirstIVA() {
+    public int SendFirstIVA()
+    {
         setSerial();
 
         String strBuff = "@SendFirstIVA";
@@ -386,10 +363,10 @@ public class HasarTick {
 
     /**
      * Continuar informaci�n de IVA
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int NextIVATransmission() {
+    public int NextIVATransmission()
+    {
         setSerial();
 
         String strBuff = "@NextIVATransmission";
@@ -401,15 +378,14 @@ public class HasarTick {
 
     //***************************************************************
     // 4. Emisi�n de documentos fiscales y notas de cr�dito
-
     /**
      * Abrir comprobante fiscal
-     *
-     * @param byVar1 Tipo de documento {TABDE}
-     * @param byVar2 T � S (valor fijo) {TS}
+     * @param	byVar1	Tipo de documento {TABDE}
+     * @param	byVar2	T � S (valor fijo) {TS}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int OpenFiscalReceipt(String byVar1, String byVar2) {
+    public int OpenFiscalReceipt(String byVar1, String byVar2)
+    {
         setSerial();
 
         String strBuff = "@OpenFiscalReceipt" + "|" + byVar1 + "|" + byVar2;
@@ -421,12 +397,12 @@ public class HasarTick {
 
     /**
      * Imprimir texto fiscal
-     *
-     * @param strVar1 Texto fiscal (max 30 bytes)
-     * @param byVar2  Par�metro display: 0, 1 o 2
+     * @param	strVar1	Texto fiscal (max 30 bytes)
+     * @param	byVar2	Par�metro display: 0, 1 o 2
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int PrintFiscalText(String strVar1, String byVar2) {
+    public int PrintFiscalText(String strVar1, String byVar2)
+    {
         setSerial();
 
         String strBuff = "@PrintFiscalText" + "|" + strVar1 + "|" + byVar2;
@@ -438,20 +414,20 @@ public class HasarTick {
 
     /**
      * Imprimir �tem
-     *
-     * @param strVar1 Texto descripci�n del item (max 20 bytes)
-     * @param dblVar2 Cantidad (nnnn.nnnnnnnnnn)
-     * @param dblVar3 Precio unitario (nnnnnn.nn)
-     * @param strVar4 Porcentaje IVA (nn.nn)/(**.**) (max 5 bytes)
-     * @param byVar5  Calificador de la operaci�n {Mm}
-     * @param strVar6 Impuestos internos
-     * @param byVar7  Par�metro display: 0, 1 o 2 {012}
-     * @param byVar8  T: precio total; otro car�cter: precio base {TBO}
+     * @param	strVar1	Texto descripci�n del item (max 20 bytes)
+     * @param	dblVar2	Cantidad (nnnn.nnnnnnnnnn)
+     * @param	dblVar3	Precio unitario (nnnnnn.nn)
+     * @param	strVar4	Porcentaje IVA (nn.nn)/(**.**) (max 5 bytes)
+     * @param	byVar5	Calificador de la operaci�n {Mm}
+     * @param	strVar6	Impuestos internos
+     * @param	byVar7	Par�metro display: 0, 1 o 2 {012}
+     * @param	byVar8	T: precio total; otro car�cter: precio base {TBO}
      * @return 0 si no hay error y != 0 si hay un error
      */
     public int PrintLineItem(String strVar1, Double dblVar2, Double dblVar3, String strVar4,
                              String byVar5, String strVar6, String byVar7,
-                             String byVar8) {
+                             String byVar8)
+    {
         setSerial();
 
         String strBuff = "@PrintLineItem" + "|" + strVar1 + "|" + dblVar2.toString() + "|" +
@@ -465,16 +441,16 @@ public class HasarTick {
 
     /**
      * Descuento/Recargo sobre �ltimo �tem vendido
-     *
-     * @param strVar1 Texto descripci�n (max 20 bytes)
-     * @param dblVar2 Monto (nnnnnnn.nn)
-     * @param byVar3  Imputaci�n {Mm}
-     * @param byVar4  Par�metro display: 0, 1 o 2 {012}
-     * @param byVar5  Calificador de monto {BTO}
+     * @param	strVar1	Texto descripci�n (max 20 bytes)
+     * @param	dblVar2	Monto (nnnnnnn.nn)
+     * @param	byVar3	Imputaci�n {Mm}
+     * @param	byVar4	Par�metro display: 0, 1 o 2 {012}
+     * @param	byVar5	Calificador de monto {BTO}
      * @return 0 si no hay error y != 0 si hay un error
      */
     public int LastItemDiscount(String strVar1, Double dblVar2, String byVar3, String byVar4,
-                                String byVar5) {
+                                String byVar5)
+    {
         setSerial();
 
         String strBuff = "@LastItemDiscount" + "|" + strVar1 + "|" + dblVar2.toString() + "|" +
@@ -487,16 +463,16 @@ public class HasarTick {
 
     /**
      * Descuento general
-     *
-     * @param strVar1 Texto descripci�n (max 20 bytes)
-     * @param dblVar2 Monto (nnnnnnn.nn)
-     * @param byVar3  Imputaci�n {Mm}
-     * @param byVar4  Par�metro display: 0, 1 o 2 {012}
-     * @param byVar5  Calificador de monto {BTO}
+     * @param	strVar1	Texto descripci�n (max 20 bytes)
+     * @param	dblVar2	Monto (nnnnnnn.nn)
+     * @param	byVar3	Imputaci�n {Mm}
+     * @param	byVar4	Par�metro display: 0, 1 o 2 {012}
+     * @param	byVar5	Calificador de monto {BTO}
      * @return 0 si no hay error y != 0 si hay un error
      */
     public int GeneralDiscount(String strVar1, Double dblVar2, String byVar3, String byVar4,
-                               String byVar5) {
+                               String byVar5)
+    {
         setSerial();
 
         String strBuff = "@GeneralDiscount" + "|" + strVar1 + "|" + dblVar2.toString() + "|" +
@@ -509,20 +485,20 @@ public class HasarTick {
 
     /**
      * Devoluci�n de envases, Bonificaciones y Recargos
-     *
-     * @param strVar1 Texto descripci�n (max 20 bytes)
-     * @param dblVar2 Monto (nnnnnnn.nn)
-     * @param strVar3 Porcentaje IVA (nn.nn)/(**.**) (max 5 bytes)
-     * @param byVar4  Imputaci�n {Mm}
-     * @param strVar5 Impuestos internos
-     * @param byVar6  Par�metro display: 0, 1 o 2 {012}
-     * @param byVar7  T:precio total, otro caracter precio base {BTO}
-     * @param byVar8  Calificador de operaci�n {BO}
+     * @param	strVar1	Texto descripci�n (max 20 bytes)
+     * @param	dblVar2	Monto (nnnnnnn.nn)
+     * @param	strVar3	Porcentaje IVA (nn.nn)/(**.**) (max 5 bytes)
+     * @param	byVar4	Imputaci�n {Mm}
+     * @param	strVar5	Impuestos internos
+     * @param	byVar6	Par�metro display: 0, 1 o 2 {012}
+     * @param	byVar7	T:precio total, otro caracter precio base {BTO}
+     * @param	byVar8	Calificador de operaci�n {BO}
      * @return 0 si no hay error y != 0 si hay un error
      */
     public int ReturnRecharge(String strVar1, Double dblVar2, String strVar3, String byVar4,
                               String strVar5, String byVar6, String byVar7,
-                              String byVar8) {
+                              String byVar8)
+    {
         setSerial();
 
         String strBuff = "@ReturnRecharge" + "|" + strVar1 + "|" + dblVar2.toString() + "|" +
@@ -536,11 +512,11 @@ public class HasarTick {
 
     /**
      * Recargo IVA a Responsable no Inscripto
-     *
-     * @param dblVar1 Monto (nnnnnnn.nn)
+     * @param	dblVar1	Monto (nnnnnnn.nn)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int ChargeNonRegisteredTax(Double dblVar1) {
+    public int ChargeNonRegisteredTax(Double dblVar1)
+    {
         setSerial();
 
         String strBuff = "@ChargeNonRegisteredTax" + "|" + dblVar1.toString();
@@ -552,13 +528,13 @@ public class HasarTick {
 
     /**
      * Percepciones
-     *
-     * @param strVar1 Al�cuota IVA (nn.nn / **.**) (max 5 bytes)
-     * @param strVar2 Texto descripci�n (max 20 bytes)
-     * @param dblVar3 Monto (nnnnnnn.nn)
+     * @param	strVar1	Al�cuota IVA (nn.nn / **.**) (max 5 bytes)
+     * @param	strVar2	Texto descripci�n (max 20 bytes)
+     * @param	dblVar3	Monto (nnnnnnn.nn)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int Perceptions(String strVar1, String strVar2, Double dblVar3) {
+    public int Perceptions(String strVar1, String strVar2, Double dblVar3)
+    {
         setSerial();
 
         String strBuff = "@Perceptions" + "|" + strVar1 + "|" + strVar2 + "|" + dblVar3.toString();
@@ -570,13 +546,13 @@ public class HasarTick {
 
     /**
      * Subtotal
-     *
-     * @param byVar1  Par�metro impresi�n
-     * @param strVar2 Reservado (llenar con un caracter cualquiera) (max 26 bytes)
-     * @param byVar3  Par�metro display: 0, 1 o 2 {012}
+     * @param	byVar1	Par�metro impresi�n
+     * @param	strVar2	Reservado (llenar con un caracter cualquiera) (max 26 bytes)
+     * @param	byVar3	Par�metro display: 0, 1 o 2 {012}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int Subtotal(String byVar1, String strVar2, String byVar3) {
+    public int Subtotal(String byVar1, String strVar2, String byVar3)
+    {
         setSerial();
 
         String strBuff = "@Subtotal" + "|" + byVar1 + "|" + strVar2 + "|" + byVar3;
@@ -588,14 +564,14 @@ public class HasarTick {
 
     /**
      * Total
-     *
-     * @param strVar1 Texto de descripci�n (max 30 bytes)
-     * @param dblVar2 Monto pagado (nnnnnnn.nn)
-     * @param byVar3  Calificador operaci�n {CT}
-     * @param byVar4  Par�metro display: 0, 1 o 2 {012}
+     * @param	strVar1	Texto de descripci�n (max 30 bytes)
+     * @param	dblVar2	Monto pagado (nnnnnnn.nn)
+     * @param	byVar3	Calificador operaci�n {CT}
+     * @param	byVar4	Par�metro display: 0, 1 o 2 {012}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int TotalTender(String strVar1, Double dblVar2, String byVar3, String byVar4) {
+    public int TotalTender(String strVar1, Double dblVar2, String byVar3, String byVar4)
+    {
         setSerial();
 
         String strBuff = "@TotalTender" + "|" + strVar1 + "|" + dblVar2.toString() + "|" +
@@ -608,10 +584,10 @@ public class HasarTick {
 
     /**
      * Cerrar comprobante fiscal
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int CloseFiscalReceipt() {
+    public int CloseFiscalReceipt()
+    {
         setSerial();
 
         String strBuff = "@CloseFiscalReceipt";
@@ -623,13 +599,12 @@ public class HasarTick {
 
     //***************************************************************
     // 5. Comandos de Comprobantes no fiscal
-
     /**
      * Abrir comprobante no fiscal
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int OpenNonFiscalReceipt() {
+    public int OpenNonFiscalReceipt()
+    {
         setSerial();
 
         String strBuff = "@OpenNonFiscalReceipt";
@@ -641,10 +616,10 @@ public class HasarTick {
 
     /**
      * Abrir comprobante no fiscal en impresora slip
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int OpenNonFiscalSlip() {
+    public int OpenNonFiscalSlip()
+    {
         setSerial();
 
         String strBuff = "@OpenNonFiscalSlip";
@@ -656,12 +631,12 @@ public class HasarTick {
 
     /**
      * Imprimir texto no fiscal
-     *
-     * @param strVar1 Texto no fiscal (max 40 bytes)
-     * @param byVar2  Par�metro display: 0, 1 o 2 {012}
+     * @param	strVar1	Texto no fiscal (max 40 bytes)
+     * @param	byVar2	Par�metro display: 0, 1 o 2 {012}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int PrintNonFiscalText(String strVar1, String byVar2) {
+    public int PrintNonFiscalText(String strVar1, String byVar2)
+    {
         setSerial();
 
         String strBuff = "@PrintNonFiscalText" + "|" + strVar1 + "|" + byVar2;
@@ -673,10 +648,10 @@ public class HasarTick {
 
     /**
      * Cerrar comprobante no fiscal
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int CloseNonFiscalReceipt() {
+    public int CloseNonFiscalReceipt()
+    {
         setSerial();
 
         String strBuff = "@CloseNonFiscalReceipt";
@@ -688,15 +663,14 @@ public class HasarTick {
 
     //***************************************************************
     // 6. Comandos de documentos no fiscales homologados
-
     /**
      * Abrir documento no fiscal homologado
-     *
-     * @param byVar1 Tipo de documento {RS}
-     * @param byVar2 T � S (valor fijo) {TS}
+     * @param	byVar1	Tipo de documento {RS}
+     * @param	byVar2	T � S (valor fijo) {TS}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int OpenDNFH(String byVar1, String byVar2) {
+    public int OpenDNFH(String byVar1, String byVar2)
+    {
         setSerial();
 
         String strBuff = "@OpenDNFH" + "|" + byVar1 + "|" + byVar2;
@@ -708,10 +682,10 @@ public class HasarTick {
 
     /**
      * Cerrar documento no fiscal homologado
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int CloseDNFH() {
+    public int CloseDNFH()
+    {
         setSerial();
 
         String strBuff = "@CloseDNFH";
@@ -723,11 +697,11 @@ public class HasarTick {
 
     /**
      * Documento No Fiscal Homologado para Farmacias
-     *
-     * @param nVar1 Cantidad de ejemplares a imprimir (n)
+     * @param	nVar1	Cantidad de ejemplares a imprimir (n)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int DNFHFarmacias(Integer nVar1) {
+    public int DNFHFarmacias(Integer nVar1)
+    {
         setSerial();
 
         String strBuff = "@DNFHFarmacias" + "|" + nVar1.toString();
@@ -739,11 +713,11 @@ public class HasarTick {
 
     /**
      * Documento No Fiscal Homologado, ticket de reparto
-     *
-     * @param nVar1 Cantidad de ejemplares a imprimir (n)
+     * @param	nVar1	Cantidad de ejemplares a imprimir (n)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int DNFHReparto(Integer nVar1) {
+    public int DNFHReparto(Integer nVar1)
+    {
         setSerial();
 
         String strBuff = "@DNFHReparto" + "|" + nVar1.toString();
@@ -755,18 +729,18 @@ public class HasarTick {
 
     /**
      * Datos del voucher de tarjeta de cr�dito 1
-     *
-     * @param strVar1 Nombre del cliente (max 30 bytes)
-     * @param strVar2 Nombre tarjeta de cr�dito (max 20 bytes)
-     * @param byVar3  Calificador de operaci�n {CVDA}
-     * @param strVar4 N�mero de tarjeta (max 16 bytes)
-     * @param strVar5 Fecha vencimiento tarjeta (AAMM) (max 4 bytes)
-     * @param byVar6  Tipo de tarjeta usada {DC}
-     * @param nVar7   Cantidad de cuotas (2 d�gitos) (nn)
+     * @param	strVar1	Nombre del cliente (max 30 bytes)
+     * @param	strVar2	Nombre tarjeta de cr�dito (max 20 bytes)
+     * @param	byVar3	Calificador de operaci�n {CVDA}
+     * @param	strVar4	N�mero de tarjeta (max 16 bytes)
+     * @param	strVar5	Fecha vencimiento tarjeta (AAMM) (max 4 bytes)
+     * @param	byVar6	Tipo de tarjeta usada {DC}
+     * @param	nVar7	Cantidad de cuotas (2 d�gitos) (nn)
      * @return 0 si no hay error y != 0 si hay un error
      */
     public int SetVoucherData1(String strVar1, String strVar2, String byVar3, String strVar4,
-                               String strVar5, String byVar6, Integer nVar7) {
+                               String strVar5, String byVar6, Integer nVar7)
+    {
         setSerial();
 
         String strBuff = "@SetVoucherData1" + "|" + strVar1 + "|" + strVar2 + "|" + byVar3 + "|" +
@@ -780,22 +754,22 @@ public class HasarTick {
 
     /**
      * Datos del voucher de tarjeta de cr�dito 2
-     *
-     * @param strVar1  C�digo de comercio (max 15 bytes)
-     * @param strVar2  N�mero de terminal (max 8 bytes)
-     * @param strVar3  N�mero de lote (max 3 bytes)
-     * @param strVar4  N�mero de cup�n (max 4 bytes)
-     * @param byVar5   Ingreso de datos tarjeta { *}
-     * @param byVar6   Tipo de operaci�n {NF}
-     * @param strVar7  N�mero de autorizaci�n (max 6 bytes)
-     * @param strVar8  Importe (max 15 bytes)
-     * @param strVar9  N�mero de comprobante fiscal (max 20 bytes)
-     * @param strVar10 Nombre del vendedor (max 20 bytes)
+     * @param	strVar1	C�digo de comercio (max 15 bytes)
+     * @param	strVar2	N�mero de terminal (max 8 bytes)
+     * @param	strVar3	N�mero de lote (max 3 bytes)
+     * @param	strVar4	N�mero de cup�n (max 4 bytes)
+     * @param	byVar5	Ingreso de datos tarjeta { *}
+     * @param	byVar6	Tipo de operaci�n {NF}
+     * @param	strVar7	N�mero de autorizaci�n (max 6 bytes)
+     * @param	strVar8	Importe (max 15 bytes)
+     * @param	strVar9	N�mero de comprobante fiscal (max 20 bytes)
+     * @param	strVar10	Nombre del vendedor (max 20 bytes)
      * @return 0 si no hay error y != 0 si hay un error
      */
     public int SetVoucherData2(String strVar1, String strVar2, String strVar3, String strVar4,
                                String byVar5, String byVar6, String strVar7,
-                               String strVar8, String strVar9, String strVar10) {
+                               String strVar8, String strVar9, String strVar10)
+    {
         setSerial();
 
         String strBuff = "@SetVoucherData2" + "|" + strVar1 + "|" + strVar2 + "|" + strVar3 + "|" +
@@ -809,11 +783,11 @@ public class HasarTick {
 
     /**
      * Imprimir voucher
-     *
-     * @param byVar1 Cantidad ejemplares a imprimir (m�ximo: 3) {0123}
+     * @param	byVar1	Cantidad ejemplares a imprimir (m�ximo: 3) {0123}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int PrintVoucher(String byVar1) {
+    public int PrintVoucher(String byVar1)
+    {
         setSerial();
 
         String strBuff = "@PrintVoucher" + "|" + byVar1;
@@ -825,13 +799,12 @@ public class HasarTick {
 
     //***************************************************************
     // 7. Comandos de control de la impresora
-
     /**
      * Cancelaci�n
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int Cancel() {
+    public int Cancel()
+    {
         setSerial();
 
         String strBuff = "@Cancel";
@@ -843,14 +816,14 @@ public class HasarTick {
 
     /**
      * C�digo de barras
-     *
-     * @param byVar1  Tipo de barras {1234}
-     * @param strVar2 Datos EAN 8 / UPCA / EAN 13 / ITS 2 de 5 (max 32 bytes)
-     * @param byVar3  N: imprime n�meros; otro: no imprime n�meros {NO}
-     * @param byVar4  Impresi�n (P: imprime en el momento; O: imprime al final {PO}
+     * @param	byVar1	Tipo de barras {1234}
+     * @param	strVar2	Datos EAN 8 / UPCA / EAN 13 / ITS 2 de 5 (max 32 bytes)
+     * @param	byVar3	N: imprime n�meros; otro: no imprime n�meros {NO}
+     * @param	byVar4	Impresi�n (P: imprime en el momento; O: imprime al final {PO}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int BarCode(String byVar1, String strVar2, String byVar3, String byVar4) {
+    public int BarCode(String byVar1, String strVar2, String byVar3, String byVar4)
+    {
         setSerial();
 
         String strBuff = "@BarCode" + "|" + byVar1 + "|" + strVar2 + "|" + byVar3 + "|" +
@@ -863,11 +836,11 @@ public class HasarTick {
 
     /**
      * Avanzar papel de tickets
-     *
-     * @param nVar1 Cantidad de l�neas a avanzar (nn)
+     * @param	nVar1	Cantidad de l�neas a avanzar (nn)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int FeedReceipt(Integer nVar1) {
+    public int FeedReceipt(Integer nVar1)
+    {
         setSerial();
 
         String strBuff = "@FeedReceipt" + "|" + nVar1.toString();
@@ -879,11 +852,11 @@ public class HasarTick {
 
     /**
      * Avanzar papel cinta de auditor�a
-     *
-     * @param nVar1 Cantidad de l�neas a avanzar (nn)
+     * @param	nVar1	Cantidad de l�neas a avanzar (nn)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int FeedJournal(Integer nVar1) {
+    public int FeedJournal(Integer nVar1)
+    {
         setSerial();
 
         String strBuff = "@FeedJournal" + "|" + nVar1.toString();
@@ -895,11 +868,11 @@ public class HasarTick {
 
     /**
      * Avanzar papeles de tickets y cinta de auditor�a
-     *
-     * @param nVar1 Cantidad de l�neas a avanzar (nn)
+     * @param	nVar1	Cantidad de l�neas a avanzar (nn)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int FeedReceiptJournal(Integer nVar1) {
+    public int FeedReceiptJournal(Integer nVar1)
+    {
         setSerial();
 
         String strBuff = "@FeedReceiptJournal" + "|" + nVar1.toString();
@@ -911,15 +884,14 @@ public class HasarTick {
 
     //***************************************************************
     // 8. Comandos de fecha, hora, encabezamiento y cola de documentos
-
     /**
      * Ingresar fecha y hora
-     *
-     * @param strVar1 Fecha (formato AAMMDD) (max 6 bytes)
-     * @param strVar2 Hora (formato HHMMSS) (max 6 bytes)
+     * @param	strVar1	Fecha (formato AAMMDD) (max 6 bytes)
+     * @param	strVar2	Hora (formato HHMMSS) (max 6 bytes)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int SetDateTime(String strVar1, String strVar2) {
+    public int SetDateTime(String strVar1, String strVar2)
+    {
         setSerial();
 
         String strBuff = "@SetDateTime" + "|" + strVar1 + "|" + strVar2;
@@ -931,10 +903,10 @@ public class HasarTick {
 
     /**
      * Consultar fecha y hora
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int GetDateTime() {
+    public int GetDateTime()
+    {
         setSerial();
 
         String strBuff = "@GetDateTime";
@@ -946,12 +918,12 @@ public class HasarTick {
 
     /**
      * Programar texto de encabezamiento y cola de documentos
-     *
-     * @param nVar1   Nro de l�nea de encabezamiento (1-10) o cola (11-20) (nn)
-     * @param strVar2 Texto de descripci�n (max 40 bytes)
+     * @param	nVar1	Nro de l�nea de encabezamiento (1-10) o cola (11-20) (nn)
+     * @param	strVar2	Texto de descripci�n (max 40 bytes)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int SetHeaderTrailer(Integer nVar1, String strVar2) {
+    public int SetHeaderTrailer(Integer nVar1, String strVar2)
+    {
         setSerial();
 
         String strBuff = "@SetHeaderTrailer" + "|" + nVar1.toString() + "|" + strVar2;
@@ -963,11 +935,11 @@ public class HasarTick {
 
     /**
      * Reportar texto de encabezamiento y cola de documentos
-     *
-     * @param nVar1 Nro de l�nea de encabezamiento (1-10) o cola (11-20) (nn)
+     * @param	nVar1	Nro de l�nea de encabezamiento (1-10) o cola (11-20) (nn)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int GetHeaderTrailer(Integer nVar1) {
+    public int GetHeaderTrailer(Integer nVar1)
+    {
         setSerial();
 
         String strBuff = "@GetHeaderTrailer" + "|" + nVar1.toString();
@@ -979,16 +951,16 @@ public class HasarTick {
 
     /**
      * Datos comprador factura
-     *
-     * @param strVar1 Nombre (max 30 bytes)
-     * @param strVar2 CUIT / Nro documento (max 11 bytes)
-     * @param byVar3  Responsabilidad frente al IVA {INEACBMST}
-     * @param byVar4  Tipo de documento {CL1234}
-     * @param strVar5 Domicilio comercial (max 40 bytes)
+     * @param	strVar1	Nombre (max 30 bytes)
+     * @param	strVar2	CUIT / Nro documento (max 11 bytes)
+     * @param	byVar3	Responsabilidad frente al IVA {INEACBMST}
+     * @param	byVar4	Tipo de documento {CL1234}
+     * @param	strVar5	Domicilio comercial (max 40 bytes)
      * @return 0 si no hay error y != 0 si hay un error
      */
     public int SetCustomerData(String strVar1, String strVar2, String byVar3, String byVar4,
-                               String strVar5) {
+                               String strVar5)
+    {
         setSerial();
 
         String strBuff = "@SetCustomerData" + "|" + strVar1 + "|" + strVar2 + "|" + byVar3 + "|" +
@@ -1001,12 +973,12 @@ public class HasarTick {
 
     /**
      * Programar texto del nombre de fantas�a del propietario
-     *
-     * @param byVar1  Nro de l�nea del nombre de fantas�a (1-2) {12}
-     * @param strVar2 Texto de descripci�n (max 40 bytes)
+     * @param	byVar1	Nro de l�nea del nombre de fantas�a (1-2) {12}
+     * @param	strVar2	Texto de descripci�n (max 40 bytes)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int SetFantasyName(String byVar1, String strVar2) {
+    public int SetFantasyName(String byVar1, String strVar2)
+    {
         setSerial();
 
         String strBuff = "@SetFantasyName" + "|" + byVar1 + "|" + strVar2;
@@ -1018,11 +990,11 @@ public class HasarTick {
 
     /**
      * Reportar texto del nombre de fantas�a del propietario
-     *
-     * @param byVar1 Nro de l�nea a reportar (1-2) {12}
+     * @param	byVar1	Nro de l�nea a reportar (1-2) {12}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int GetFantasyName(String byVar1) {
+    public int GetFantasyName(String byVar1)
+    {
         setSerial();
 
         String strBuff = "@GetFantasyName" + "|" + byVar1;
@@ -1034,12 +1006,12 @@ public class HasarTick {
 
     /**
      * Cargar informaci�n remito / comprobante original
-     *
-     * @param byVar1  Nro de l�nea de remito / comprobante original (1-2) {12}
-     * @param strVar2 Texto de descripci�n (max 20 bytes)
+     * @param	byVar1	Nro de l�nea de remito / comprobante original (1-2) {12}
+     * @param	strVar2	Texto de descripci�n (max 20 bytes)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int SetEmbarkNumber(String byVar1, String strVar2) {
+    public int SetEmbarkNumber(String byVar1, String strVar2)
+    {
         setSerial();
 
         String strBuff = "@SetEmbarkNumber" + "|" + byVar1 + "|" + strVar2;
@@ -1051,11 +1023,11 @@ public class HasarTick {
 
     /**
      * Reportar informaci�n remito / comprobante original
-     *
-     * @param byVar1 Nro de l�nea a reportar (1-2) {12}
+     * @param	byVar1	Nro de l�nea a reportar (1-2) {12}
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int GetEmbarkNumber(String byVar1) {
+    public int GetEmbarkNumber(String byVar1)
+    {
         setSerial();
 
         String strBuff = "@GetEmbarkNumber" + "|" + byVar1;
@@ -1067,10 +1039,10 @@ public class HasarTick {
 
     /**
      * Abrir gaveta
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int OpenDrawer() {
+    public int OpenDrawer()
+    {
         setSerial();
 
         String strBuff = "@OpenDrawer";
@@ -1082,12 +1054,12 @@ public class HasarTick {
 
     /**
      * Escribir en display
-     *
-     * @param byVar1  Campo sobre el que se escribe {KLN}
-     * @param strVar2 Mensaje a exhibir (max 16 bytes)
+     * @param	byVar1	Campo sobre el que se escribe {KLN}
+     * @param	strVar2	Mensaje a exhibir (max 16 bytes)
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int WriteDisplay(String byVar1, String strVar2) {
+    public int WriteDisplay(String byVar1, String strVar2)
+    {
         setSerial();
 
         String strBuff = "@WriteDisplay" + "|" + byVar1 + "|" + strVar2;
@@ -1099,10 +1071,10 @@ public class HasarTick {
 
     /**
      * Cancela cualquier documento fiscal o no fiscal abierto
-     *
      * @return 0 si no hay error y != 0 si hay un error
      */
-    public int Sincro() {
+    public int Sincro()
+    {
         setSerial();
 
         String strBuff = "@Sincro";
@@ -1113,7 +1085,7 @@ public class HasarTick {
     }
 
     public void setSerial() {
-        IF_SERIAL(SERIAL_ID);
+        IF_SERIAL(SERIAL_ID) ;
     }
 
 }

@@ -1,7 +1,7 @@
 package com.southconqueror.impresiones.serviciosweb.comprobantes;
 
 import com.southconqueror.impresiones.entidades.ComandoImpresora;
-import com.southconqueror.impresiones.logica.impresoras.serial.HasarSerial;
+import com.southconqueror.impresiones.logica.impresoras.ImpresoraFiscal;
 import com.southconqueror.impresiones.logica.utiles.JsonConverter;
 import com.southconqueror.impresiones.serviciosweb.ResponseError;
 import org.apache.log4j.LogManager;
@@ -27,7 +27,7 @@ public class ImpresoraFiscalControlador {
         logger.info(String.format("Recibido request para ejecutar comando [%s]", JsonConverter.objectToString(comando)));
 
         try {
-            int rtaComando = HasarSerial.getInstance().ejecutarComando(comando.getComando());
+            int rtaComando = ImpresoraFiscal.getInstance().ejecutarComando(comando.getComando());
             return Response
                     .status(Response.Status.OK)
                     .entity("{\"codigoRespuesta\": \"" + rtaComando + "\"}").build();
@@ -46,7 +46,7 @@ public class ImpresoraFiscalControlador {
         logger.info("Recibido request para leer respuesta comando");
 
         try {
-            String respuestaComando = HasarSerial.getInstance().leerRespuestaComando(campo);
+            String respuestaComando = ImpresoraFiscal.getInstance().leerRespuestaComando(campo);
             return Response
                     .status(Response.Status.OK)
                     .entity("{\"respuestaComando\": \"" + respuestaComando + "\"}").build();

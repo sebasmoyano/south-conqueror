@@ -3,9 +3,9 @@ package com.southconqueror.impresiones.logica.slingr;
 import com.southconqueror.impresiones.logica.Contexto;
 import com.southconqueror.impresiones.logica.utiles.CryptoUtils;
 
-public class PlatformManager {
+public class AppManager {
 
-    private static PlatformManager instance;
+    private static AppManager instance;
 
     private SlingrClient client;
 
@@ -21,13 +21,13 @@ public class PlatformManager {
     private static String MICA_USER = "system@mica.slingrs.io";
     private static String MICA_KEY = "RUm7o2PAhkf1aS56y+BB7XLp/FUlIqwVaBq/DWFs7I3vKJhAHaSy3imXryybnr7wowYGISve74VAjk6MvjrKnXXL7gQwAIie3gFX4mZYHHA=";
 
-    private PlatformManager() {
+    private AppManager() {
         iniciarCliente();
     }
 
-    public synchronized static PlatformManager getInstance() {
+    public synchronized static AppManager getInstance() {
         if (instance == null) {
-            instance = new PlatformManager();
+            instance = new AppManager();
         }
         return instance;
     }
@@ -56,7 +56,6 @@ public class PlatformManager {
         }
         client = new SlingrClient(domain + "/dev/runtime/api", user, key);
     }
-
 
     public Json actualizarNumero(String path, final Json payload) {
         return client.actualizarNumero(path, payload);

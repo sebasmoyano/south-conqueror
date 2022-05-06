@@ -1,6 +1,7 @@
 package com.southconqueror.impresiones;
 
 import com.southconqueror.impresiones.logica.Contexto;
+import com.southconqueror.impresiones.logica.impresoras.ImpresoraFiscal;
 import com.southconqueror.impresiones.logica.impresoras.serial.HasarSerial;
 import com.southconqueror.impresiones.serviciosweb.comprobantes.*;
 import com.southconqueror.impresiones.serviciosweb.estacionamiento.TicketsEstacionamientoControlador;
@@ -73,7 +74,7 @@ public class Main {
 
     private static void iniciarImpresora() {
         try {
-            HasarSerial.getInstance().configurar();
+            ImpresoraFiscal.getInstance().configurar();
         } catch (Exception e) {
             logger.error("Error al inicializar impresora", e);
             logger.info("Iniciando como impresora PDF");

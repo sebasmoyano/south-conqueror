@@ -69,7 +69,6 @@ public class NotaFiscal {
         return null;
     }
 
-
     public double getTotal() {
         return total;
     }

@@ -1,7 +1,7 @@
 package com.southconqueror.impresiones.serviciosweb.comprobantes;
 
-import com.southconqueror.impresiones.entidades.*;
-import com.southconqueror.impresiones.logica.impresoras.serial.HasarSerial;
+import com.southconqueror.impresiones.entidades.ComprobanteNoFiscal;
+import com.southconqueror.impresiones.logica.impresoras.ImpresoraFiscal;
 import com.southconqueror.impresiones.logica.utiles.JsonConverter;
 import com.southconqueror.impresiones.serviciosweb.ResponseError;
 import org.apache.log4j.LogManager;
@@ -35,7 +35,7 @@ public class ComprobantesNoFiscalesControlador {
             return Response.status(error.getStatus()).entity(error.convertirAJson()).build();
         }
         try {
-            HasarSerial.getInstance().imprimirComprobanteNoFiscal(comprobanteNoFiscal);
+            ImpresoraFiscal.getInstance().imprimirComprobanteNoFiscal(comprobanteNoFiscal);
         } catch (Exception e) {
             logger.error("Error al imprimir comprobante", e);
             ResponseError systemError = new ResponseError(Response.Status.INTERNAL_SERVER_ERROR, e.getMessage());

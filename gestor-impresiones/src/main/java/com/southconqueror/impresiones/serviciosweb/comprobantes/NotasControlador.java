@@ -1,14 +1,17 @@
 package com.southconqueror.impresiones.serviciosweb.comprobantes;
 
-import com.southconqueror.impresiones.entidades.*;
+import com.southconqueror.impresiones.entidades.NotaFiscal;
 import com.southconqueror.impresiones.logica.comprobantes.NotasManager;
-import com.southconqueror.impresiones.logica.impresoras.serial.HasarSerial;
+import com.southconqueror.impresiones.logica.impresoras.ImpresoraFiscal;
 import com.southconqueror.impresiones.logica.utiles.JsonConverter;
 import com.southconqueror.impresiones.serviciosweb.ResponseError;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -36,10 +39,10 @@ public class NotasControlador {
             String nroComprobante = null;
             switch (notaFiscal.getTipo()) {
                 case CREDITO:
-                    nroComprobante = HasarSerial.getInstance().imprimirNotaCredito(notaFiscal);
+                    nroComprobante = ImpresoraFiscal.getInstance().imprimirNotaCredito(notaFiscal);
                     break;
                 case DEBITO:
-                    nroComprobante = HasarSerial.getInstance().imprimirNotaDebito(notaFiscal);
+                    nroComprobante = ImpresoraFiscal.getInstance().imprimirNotaDebito(notaFiscal);
                     break;
             }
             return Response

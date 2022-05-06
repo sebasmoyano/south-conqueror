@@ -4,9 +4,8 @@ import IFDrivers.HasarTick;
 import com.southconqueror.impresiones.entidades.*;
 import com.southconqueror.impresiones.logica.impresoras.ImpresoraFiscal;
 import com.southconqueror.impresiones.logica.propiedades.Utiles;
-import com.southconqueror.impresiones.logica.utiles.JsonConverter;
 import com.southconqueror.impresiones.logica.slingr.Json;
-import com.southconqueror.impresiones.logica.slingr.PlatformManager;
+import com.southconqueror.impresiones.logica.utiles.JsonConverter;
 import com.southconqueror.impresiones.logica.utils.AppProperties;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.LogManager;
@@ -18,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * @author sebastián
  */
-public class HasarSerial implements ImpresoraFiscal {
+public class HasarSerial extends ImpresoraFiscal {
 
     private static Logger logger = LogManager.getLogger(HasarSerial.class);
 
@@ -26,8 +25,8 @@ public class HasarSerial implements ImpresoraFiscal {
     private HasarTick IPrinter;
     private static String DEFAULT_SERIAL_PORT = "COM1";
     private static int DEFAULT_PORT_SPEED = 9600;
-
     private final static String PARAMETRO_DISPLAY_COMPROBANTE_NO_FISCAL = "0";
+    private final static String SERIAL_PRINTER_DLL = "H71532Jv";
 
     private final ReentrantLock imprimirFacturaLock = new ReentrantLock();
 
@@ -35,7 +34,6 @@ public class HasarSerial implements ImpresoraFiscal {
     private String puntoDeVenta;
 
     private HasarSerial() {
-
     }
 
     public synchronized static HasarSerial getInstance() {
@@ -50,7 +48,7 @@ public class HasarSerial implements ImpresoraFiscal {
     @Override
     public void configurar() {
         try {
-            HasarTick.cargarLibreriaNativa();
+            System.loadLibrary(SERIAL_PRINTER_DLL);
             IPrinter = new HasarTick();
         } catch (Throwable e) {
             logger.error("Driver de impresora no pudo ser inicializado", e);
@@ -123,6 +121,23 @@ public class HasarSerial implements ImpresoraFiscal {
         }
     }
 
+    /**
+     * Recuperar el nro. del ultimo Comprobante Fiscal Factura B o C emitido.
+     *
+     * @return ultimo nro. comprobante B o C.
+     * @throws Exception
+     */
+    @Override
+    public String getUltimoNumeroFactura(String tipoFactura) throws Exception {
+        pedirEstado();
+        if (tipoFactura.equals("A")) {
+            return leerRespuestaComando(5);
+        } else if (tipoFactura.equals("B")) {
+            return leerRespuestaComando(3);
+        }
+        return null;
+    }
+
     private void cancelarDocumentoActual() {
         chequearConexionImpresora();
 
@@ -190,22 +205,6 @@ public class HasarSerial implements ImpresoraFiscal {
         }
     }
 
-    /**
-     * Recuperar el nro. del ultimo Comprobante Fiscal Factura B o C emitido.
-     *
-     * @return ultimo nro. comprobante B o C.
-     * @throws Exception
-     */
-    public String getUltimoNumeroFactura(String tipoFactura) throws Exception {
-        pedirEstado();
-        if (tipoFactura.equals("A")) {
-            return leerRespuestaComando(5);
-        } else if (tipoFactura.equals("B")) {
-            return leerRespuestaComando(3);
-        }
-        return null;
-    }
-
     private boolean cerrarFactura() {
         if (IPrinter == null) {
             logger.error("Driver de impresora no ha sido inicializado");
@@ -225,6 +224,7 @@ public class HasarSerial implements ImpresoraFiscal {
 
     ////////////////////////// NOTAS CREDITO //////////////////////////////////
 
+    @Override
     public String imprimirNotaCredito(NotaFiscal notaFiscal) throws Exception {
         logger.info("Realizando impresion de nota de credito " + JsonConverter.objectToString(notaFiscal.getDetalle()));
 
@@ -295,6 +295,7 @@ public class HasarSerial implements ImpresoraFiscal {
 
     ////////////////////////// NOTAS DEBITO //////////////////////////////////
 
+    @Override
     public String imprimirNotaDebito(NotaFiscal notaDebito) throws Exception {
         logger.info("Realizando impresion de nota de debito " + JsonConverter.objectToString(notaDebito.getDetalle()));
 
@@ -457,16 +458,6 @@ public class HasarSerial implements ImpresoraFiscal {
 
     // interaccion server
 
-    private Json actualizarNumeroEnServidor(String url, String numeroField, String numero) {
-        Json paylod = Json.map();
-        paylod.set(numeroField, numero);
-        try {
-            return PlatformManager.getInstance().actualizarNumero(url, paylod);
-        } catch (Exception e) {
-            logger.error("No se pudo actualizar numero en servidor", e);
-            throw new RuntimeException("No se pudo actualizar numero de comprobante en servidor");
-        }
-    }
 
     private void chequearConexionImpresora() {
         if (IPrinter == null) {
