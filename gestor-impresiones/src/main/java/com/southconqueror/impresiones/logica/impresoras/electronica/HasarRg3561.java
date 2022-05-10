@@ -64,9 +64,7 @@ public class HasarRg3561 extends ImpresoraFiscal {
             final String nroComprobante = abrirFactura(factura);
             agregarDetallesFactura(factura.getDetalle());
             logger.info(String.format("Comprobante generado [%s]", nroComprobante));
-            if (StringUtils.isBlank(nroComprobante)) {
-                logger.error("La impresión se realizó correctamente pero no se pudo obtener el número de comprobante generado");
-            } else {
+            if (!StringUtils.isBlank(nroComprobante)) {
                 // llamar el callback definido
                 if (!StringUtils.isBlank(factura.getUrlCallback()) && !StringUtils.isBlank(factura.getTalonario())) {
                     logger.info(String.format("Actualizando número [%s] en servidor", nroComprobante));
@@ -74,6 +72,8 @@ public class HasarRg3561 extends ImpresoraFiscal {
                     Json response = actualizarNumeroEnServidor(factura.getUrlCallback(), "numeroFactura", numeroFactura);
                     logger.info(String.format("Respuesta estado servidor: [%s]", response));
                 }
+            } else {
+                logger.error("La impresión se realizó correctamente pero no se pudo obtener el número de comprobante generado");
             }
             return nroComprobante;
         } catch (Exception e) {
@@ -98,16 +98,13 @@ public class HasarRg3561 extends ImpresoraFiscal {
     @Override
     public String imprimirNotaCredito(NotaFiscal notaFiscal) throws Exception {
         logger.info("Realizando impresion de nota de credito " + JsonConverter.objectToString(notaFiscal.getDetalle()));
-
         try {
             cargarDatosCliente(notaFiscal.getFactura().getComprador());
             relactionarFactura(notaFiscal);
             String nroComprobante = abrirNotaCredito(notaFiscal);
             imprimirDetalle(notaFiscal.getDetalle());
             logger.info(String.format("Nota de credito generada [%s]", nroComprobante));
-            if (StringUtils.isBlank(nroComprobante)) {
-                logger.error("La impresión se realizó correctamente pero no se pudo obtener el número de comprobante generado");
-            } else {
+            if (!StringUtils.isBlank(nroComprobante)) {
                 // llamar el callback definido
                 if (!StringUtils.isBlank(notaFiscal.getUrlCallback())) {
                     String numeroNota = getPuntoDeVentaFormatted() + "-" + nroComprobante;
@@ -115,6 +112,8 @@ public class HasarRg3561 extends ImpresoraFiscal {
                     Json response = actualizarNumeroEnServidor(notaFiscal.getUrlCallback(), "numeroNota", numeroNota);
                     logger.info(String.format("Respuesta estado servidor: [%s]", response));
                 }
+            } else {
+                logger.error("La impresión se realizó correctamente pero no se pudo obtener el número de comprobante generado");
             }
             return nroComprobante;
         } finally {
@@ -124,7 +123,28 @@ public class HasarRg3561 extends ImpresoraFiscal {
 
     @Override
     public String imprimirNotaDebito(NotaFiscal notaFiscal) throws Exception {
-        return null;
+        logger.info("Realizando impresion de nota de debito " + JsonConverter.objectToString(notaFiscal.getDetalle()));
+        try {
+            cargarDatosCliente(notaFiscal.getFactura().getComprador());
+            relactionarFactura(notaFiscal);
+            String nroComprobante = abrirNotaDebito(notaFiscal);
+            imprimirDetalle(notaFiscal.getDetalle());
+            logger.info(String.format("Nota de debito generada [%s]", nroComprobante));
+            if (!StringUtils.isBlank(nroComprobante)) {
+                // llamar el callback definido
+                if (!StringUtils.isBlank(notaFiscal.getUrlCallback())) {
+                    String numeroNota = getPuntoDeVentaFormatted() + "-" + nroComprobante;
+                    logger.info(String.format("Actualizando número [%s] en servidor", numeroNota));
+                    Json response = actualizarNumeroEnServidor(notaFiscal.getUrlCallback(), "numeroNota", numeroNota);
+                    logger.info(String.format("Respuesta estado servidor: [%s]", response));
+                }
+            } else {
+                logger.error("La impresión se realizó correctamente pero no se pudo obtener el número de comprobante generado");
+            }
+            return nroComprobante;
+        } finally {
+            cerrarDocumento();
+        }
     }
 
     @Override
@@ -187,6 +207,12 @@ public class HasarRg3561 extends ImpresoraFiscal {
         return Integer.toString(respuestaAbrirNotaCredito.getNumeroComprobante());
     }
 
+    private String abrirNotaDebito(NotaFiscal notaFiscal) throws HasarException {
+        logger.info("Abrir nota de debito tipo: " + notaFiscal.getFactura().getTipoFactura());
+        RespuestaAbrirDocumento respuestaAbrirNotaDebito = impresora.AbrirDocumento(getTipoNotaDebito(notaFiscal.getFactura().getTipoFactura()));
+        return Integer.toString(respuestaAbrirNotaDebito.getNumeroComprobante());
+    }
+
     private void relactionarFactura(NotaFiscal notaFiscal) throws Exception {
         // Cargar la información de la factura que origina esta nota de crédito/débito
         impresora.CargarDocumentoAsociado(1, getTipoFactura(notaFiscal.getFactura().getTipoFactura()), 1, getNumeroFactura(notaFiscal.getFactura().getNumeroFactura()));
@@ -235,6 +261,20 @@ public class HasarRg3561 extends ImpresoraFiscal {
                     return TiposComprobante.NOTA_DE_CREDITO_B;
                 case "C":
                     return TiposComprobante.NOTA_DE_CREDITO_C;
+            }
+        }
+        return null;
+    }
+
+    private TiposComprobante getTipoNotaDebito(String tipoFactura) {
+        if (tipoFactura != null) {
+            switch (tipoFactura) {
+                case "A":
+                    return TiposComprobante.NOTA_DE_DEBITO_A;
+                case "B":
+                    return TiposComprobante.NOTA_DE_DEBITO_B;
+                case "C":
+                    return TiposComprobante.NOTA_DE_DEBITO_C;
             }
         }
         return null;
