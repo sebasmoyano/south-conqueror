@@ -63,6 +63,7 @@ public class HasarRg3561 extends ImpresoraFiscal {
             cargarDatosCliente(factura.getComprador());
             final String nroComprobante = abrirFactura(factura);
             agregarDetallesFactura(factura.getDetalle());
+            impresora.ImprimirPago("Efectivo", factura.getTotal(), ModosDePago.PAGAR);
             logger.info(String.format("Comprobante generado [%s]", nroComprobante));
             if (!StringUtils.isBlank(nroComprobante)) {
                 // llamar el callback definido
