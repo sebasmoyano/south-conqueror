@@ -197,7 +197,10 @@ public class HasarRg3561 extends ImpresoraFiscal {
                 0.00,
                 ModosDeDisplay.DISPLAY_NO,
                 ModosDePrecio.MODO_PRECIO_BASE,
-                null
+                0,
+                "P",
+                null,
+                HasarImpresoraFiscalRG3561.UnidadesMedida.UNIDAD
                 );
     }
 

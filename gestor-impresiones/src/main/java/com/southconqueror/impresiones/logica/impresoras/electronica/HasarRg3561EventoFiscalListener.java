@@ -16,7 +16,7 @@ public class HasarRg3561EventoFiscalListener implements FiscalEventListener {
 
     @Override
     public void endProcessChanged(FiscalEventObject args) {
-        logger.info(String.format("Finalizado procesamiento de comando %s", args));
+        logger.info(String.format("Finalizado procesamiento de comando %s", args.getEventoFiscal()));
     }
 
 }
