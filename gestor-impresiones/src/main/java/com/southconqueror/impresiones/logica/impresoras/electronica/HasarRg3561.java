@@ -53,6 +53,7 @@ public class HasarRg3561 extends ImpresoraFiscal {
         logger.info("Fecha inicio de actividades: " + rdi.getFechaInicioActividades());
         logger.info("Número de POS:               " + rdi.getNumeroPos());
         logger.info("Responsabilidad IVA:         " + rdi.getResponsabilidadIVA());
+        puntoDeVenta = String.format("%05d", rdi.getNumeroPos());
     }
 
     @Override
@@ -69,9 +70,9 @@ public class HasarRg3561 extends ImpresoraFiscal {
                 // llamar el callback definido
                 if (!StringUtils.isBlank(factura.getUrlCallback()) && !StringUtils.isBlank(factura.getTalonario())) {
                     logger.info(String.format("Actualizando número [%s] en servidor", nroComprobante));
-                    String numeroFactura = factura.getTalonario() + "-" + nroComprobante;
+                    String numeroFactura = getPuntoDeVenta() + "-" + nroComprobante;
                     Json response = actualizarNumeroEnServidor(factura.getUrlCallback(), "numeroFactura", numeroFactura);
-                    logger.info(String.format("Respuesta estado servidor: [%s]", response));
+                    logger.info(String.format("Respuesta servidor actualizar numero factura: [%s]", response));
                 }
             } else {
                 logger.error("La impresión se realizó correctamente pero no se pudo obtener el número de comprobante generado");
@@ -108,7 +109,7 @@ public class HasarRg3561 extends ImpresoraFiscal {
             if (!StringUtils.isBlank(nroComprobante)) {
                 // llamar el callback definido
                 if (!StringUtils.isBlank(notaFiscal.getUrlCallback())) {
-                    String numeroNota = getPuntoDeVentaFormatted() + "-" + nroComprobante;
+                    String numeroNota = getPuntoDeVenta() + "-" + nroComprobante;
                     logger.info(String.format("Actualizando número [%s] en servidor", numeroNota));
                     Json response = actualizarNumeroEnServidor(notaFiscal.getUrlCallback(), "numeroNota", numeroNota);
                     logger.info(String.format("Respuesta estado servidor: [%s]", response));
@@ -134,7 +135,7 @@ public class HasarRg3561 extends ImpresoraFiscal {
             if (!StringUtils.isBlank(nroComprobante)) {
                 // llamar el callback definido
                 if (!StringUtils.isBlank(notaFiscal.getUrlCallback())) {
-                    String numeroNota = getPuntoDeVentaFormatted() + "-" + nroComprobante;
+                    String numeroNota = getPuntoDeVenta() + "-" + nroComprobante;
                     logger.info(String.format("Actualizando número [%s] en servidor", numeroNota));
                     Json response = actualizarNumeroEnServidor(notaFiscal.getUrlCallback(), "numeroNota", numeroNota);
                     logger.info(String.format("Respuesta estado servidor: [%s]", response));
@@ -175,7 +176,8 @@ public class HasarRg3561 extends ImpresoraFiscal {
     private String abrirFactura(Factura factura) throws HasarException {
         logger.info("Abrir factura tipo: " + factura.getTipoFactura());
         RespuestaAbrirDocumento respuestaAbrirDocumento = impresora.AbrirDocumento(getTipoFactura(factura.getTipoFactura()));
-        return Integer.toString(respuestaAbrirDocumento.getNumeroComprobante());
+        // left padding with zeros
+        return String.format("%08d", respuestaAbrirDocumento.getNumeroComprobante());
     }
 
     private void agregarDetallesFactura(List<DetalleLinea> lineas) throws HasarException {
@@ -208,13 +210,15 @@ public class HasarRg3561 extends ImpresoraFiscal {
     private String abrirNotaCredito(NotaFiscal notaFiscal) throws HasarException {
         logger.info("Abrir nota de credito tipo: " + notaFiscal.getFactura().getTipoFactura());
         RespuestaAbrirDocumento respuestaAbrirNotaCredito = impresora.AbrirDocumento(getTipoNotaCredito(notaFiscal.getFactura().getTipoFactura()));
-        return Integer.toString(respuestaAbrirNotaCredito.getNumeroComprobante());
+        // left padding with zeros
+        return String.format("%08d", respuestaAbrirNotaCredito.getNumeroComprobante());
     }
 
     private String abrirNotaDebito(NotaFiscal notaFiscal) throws HasarException {
         logger.info("Abrir nota de debito tipo: " + notaFiscal.getFactura().getTipoFactura());
         RespuestaAbrirDocumento respuestaAbrirNotaDebito = impresora.AbrirDocumento(getTipoNotaDebito(notaFiscal.getFactura().getTipoFactura()));
-        return Integer.toString(respuestaAbrirNotaDebito.getNumeroComprobante());
+        // left padding with zeros
+        return String.format("%08d", respuestaAbrirNotaDebito.getNumeroComprobante());
     }
 
     private void relactionarFactura(NotaFiscal notaFiscal) throws Exception {
@@ -295,11 +299,11 @@ public class HasarRg3561 extends ImpresoraFiscal {
         return 0;
     }
 
-    private String getPuntoDeVentaFormatted() throws HasarException {
+    private String getPuntoDeVenta() throws HasarException {
         if (!StringUtils.isBlank(puntoDeVenta)) {
             return puntoDeVenta;
         } else {
-            obtenerNumeroSucursal();
+            setPuntoDeVenta();
             if (!StringUtils.isBlank(puntoDeVenta)) {
                 return puntoDeVenta;
             }
@@ -307,9 +311,9 @@ public class HasarRg3561 extends ImpresoraFiscal {
         return "";
     }
 
-    private void obtenerNumeroSucursal() throws HasarException {
+    private void setPuntoDeVenta() throws HasarException {
         RespuestaConsultarDatosInicializacion datosInicializacion = impresora.ConsultarDatosInicializacion();
-        puntoDeVenta = Integer.toString(datosInicializacion.getNumeroPos());
+        puntoDeVenta = String.format("%05d", datosInicializacion.getNumeroPos());
     }
 
 
