@@ -22,7 +22,7 @@ public class ImpresoraFiscalControlador {
     @POST
     @Path("/cerrarJornadaFiscal")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response ejecutarComando() {
+    public Response cerrarJornadaFiscal() {
         logger.info("Recibido request para cerrar jornada fiscal");
         try {
             ImpresoraFiscal.getInstance().cerrarJornadaFiscal();
