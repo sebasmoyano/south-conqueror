@@ -68,7 +68,7 @@ public class HasarRg3561 extends ImpresoraFiscal {
             logger.info(String.format("Comprobante generado [%s]", nroComprobante));
             if (!StringUtils.isBlank(nroComprobante)) {
                 // llamar el callback definido
-                if (!StringUtils.isBlank(factura.getUrlCallback()) && !StringUtils.isBlank(factura.getTalonario())) {
+                if (!StringUtils.isBlank(factura.getUrlCallback())) {
                     logger.info(String.format("Actualizando número [%s] en servidor", nroComprobante));
                     String numeroFactura = getPuntoDeVenta() + "-" + nroComprobante;
                     Json response = actualizarNumeroEnServidor(factura.getUrlCallback(), "numeroFactura", numeroFactura);
