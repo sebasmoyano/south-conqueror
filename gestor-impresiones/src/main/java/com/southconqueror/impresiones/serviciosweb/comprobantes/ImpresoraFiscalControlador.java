@@ -20,12 +20,27 @@ public class ImpresoraFiscalControlador {
     private static Logger logger = LogManager.getLogger(ImpresoraFiscalControlador.class);
 
     @POST
+    @Path("/cerrarJornadaFiscal")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response ejecutarComando() {
+        logger.info("Recibido request para cerrar jornada fiscal");
+        try {
+            ImpresoraFiscal.getInstance().cerrarJornadaFiscal();
+            return Response
+                    .status(Response.Status.OK).build();
+        } catch (Exception e) {
+            logger.error("Error al cerrar jornada fiscal", e);
+            ResponseError systemError = new ResponseError(Response.Status.INTERNAL_SERVER_ERROR, e.getMessage());
+            return Response.status(systemError.getStatus()).entity(systemError.convertirAJson()).build();
+        }
+    }
+
+    @POST
     @Path("/ejecutarComando")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response ejecutarComando(ComandoImpresora comando) {
         logger.info(String.format("Recibido request para ejecutar comando [%s]", JsonConverter.objectToString(comando)));
-
         try {
             int rtaComando = ImpresoraFiscal.getInstance().ejecutarComando(comando.getComando());
             return Response
@@ -44,7 +59,6 @@ public class ImpresoraFiscalControlador {
     @Produces(MediaType.APPLICATION_JSON)
     public Response leerRespuestaComando(@QueryParam("campo") int campo) {
         logger.info("Recibido request para leer respuesta comando");
-
         try {
             String respuestaComando = ImpresoraFiscal.getInstance().leerRespuestaComando(campo);
             return Response

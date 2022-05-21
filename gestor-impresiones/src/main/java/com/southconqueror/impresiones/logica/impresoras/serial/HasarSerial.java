@@ -385,6 +385,11 @@ public class HasarSerial extends ImpresoraFiscal {
         }
     }
 
+    @Override
+    public void cerrarJornadaFiscal() throws Exception {
+        ejecutarComando("@DailyClose|Z");
+    }
+
     private void abrirComprobanteNoFiscal() throws Exception {
         chequearConexionImpresora();
 

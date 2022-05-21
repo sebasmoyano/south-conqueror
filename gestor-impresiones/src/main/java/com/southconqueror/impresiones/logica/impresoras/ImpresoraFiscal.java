@@ -29,6 +29,8 @@ public abstract class ImpresoraFiscal {
 
     public abstract void imprimirComprobanteNoFiscal(ComprobanteNoFiscal comprobanteNoFiscal) throws Exception;
 
+    public abstract void cerrarJornadaFiscal() throws Exception;
+
     public abstract int ejecutarComando(String comando) throws Exception;
 
     public abstract String leerRespuestaComando(int campo) throws Exception;

@@ -150,6 +150,31 @@ public class HasarRg3561 extends ImpresoraFiscal {
     }
 
     @Override
+    public void cerrarJornadaFiscal() throws HasarException {
+        RespuestaCerrarJornadaFiscal respuestaCerrarJornadaFiscal = impresora.CerrarJornadaFiscal(TipoReporte.REPORTE_Z);
+        logger.info("Nro. comprobante:       " + respuestaCerrarJornadaFiscal.Z.getNumero());
+        logger.info("Fecha:                  " + respuestaCerrarJornadaFiscal.Z.getFecha());
+        logger.info("DF Cantidad cancelados: " + respuestaCerrarJornadaFiscal.Z.getDF_CantidadCancelados());
+        logger.info("DF Cantidad emitidos:   " + respuestaCerrarJornadaFiscal.Z.getDF_CantidadEmitidos());
+        logger.info("DF Total:               " + respuestaCerrarJornadaFiscal.Z.getDF_Total());
+        logger.info("DF Total Exento:        " + respuestaCerrarJornadaFiscal.Z.getDF_TotalExento());
+        logger.info("DF Total Gravado:       " + respuestaCerrarJornadaFiscal.Z.getDF_TotalGravado());
+        logger.info("DF Total IVA:           " + respuestaCerrarJornadaFiscal.Z.getDF_TotalIVA());
+        logger.info("DF Total No Gravado:    " + respuestaCerrarJornadaFiscal.Z.getDF_TotalNoGravado());
+        logger.info("DF Total Tributo:       " + respuestaCerrarJornadaFiscal.Z.getDF_TotalTributos());
+        logger.info("DNFH Cantidad emitidos: " + respuestaCerrarJornadaFiscal.Z.getDNFH_CantidadEmitidos());
+        logger.info("DNFH Total:             " + respuestaCerrarJornadaFiscal.Z.getDNFH_Total());
+        logger.info("NC Cantidad cancelados: " + respuestaCerrarJornadaFiscal.Z.getNC_CantidadCancelados());
+        logger.info("NC Cantidad emitidos:   " + respuestaCerrarJornadaFiscal.Z.getNC_CantidadEmitidos());
+        logger.info("NC Total:               " + respuestaCerrarJornadaFiscal.Z.getNC_Total());
+        logger.info("NC Total Exento:        " + respuestaCerrarJornadaFiscal.Z.getNC_TotalExento());
+        logger.info("NC Total Gravado:       " + respuestaCerrarJornadaFiscal.Z.getNC_TotalGravado());
+        logger.info("NC Total IVA:           " + respuestaCerrarJornadaFiscal.Z.getNC_TotalIVA());
+        logger.info("NC Total No Gravado:    " + respuestaCerrarJornadaFiscal.Z.getNC_TotalNoGravado());
+        logger.info("NC Total Tributo:       " + respuestaCerrarJornadaFiscal.Z.getNC_TotalTributos());
+    }
+
+    @Override
     public void imprimirComprobanteNoFiscal(ComprobanteNoFiscal comprobanteNoFiscal) throws Exception {
         // TODO: para ser implementado
     }
