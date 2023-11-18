@@ -374,7 +374,6 @@ public class HasarSerial extends ImpresoraFiscal {
 
     public void imprimirComprobanteNoFiscal(ComprobanteNoFiscal comprobanteNoFiscal) throws Exception {
         logger.info("Realizando impresion de comprobante no fiscal " + JsonConverter.objectToString(comprobanteNoFiscal));
-
         try {
             abrirComprobanteNoFiscal();
             for (String linea : comprobanteNoFiscal.getLineas()) {
@@ -392,7 +391,6 @@ public class HasarSerial extends ImpresoraFiscal {
 
     private void abrirComprobanteNoFiscal() throws Exception {
         chequearConexionImpresora();
-
         int nError = IPrinter.OpenNonFiscalReceipt();
         if (nError != 0) {
             throw new Exception("Error al abrir comprobante no fiscal");
@@ -401,7 +399,6 @@ public class HasarSerial extends ImpresoraFiscal {
 
     private void agregarDetalleComprobanteNoFiscal(String lineaComprobanteNoFiscal) throws Exception {
         chequearConexionImpresora();
-
         String linea = Utiles.parseString(lineaComprobanteNoFiscal);
         if (linea.length() > 40) {
             linea = linea.substring(0, 40);
@@ -414,7 +411,6 @@ public class HasarSerial extends ImpresoraFiscal {
 
     private void cerrarComprobanteNoFiscal() {
         chequearConexionImpresora();
-
         int nError = IPrinter.CloseNonFiscalReceipt();
         if (nError != 0) {
             logger.error("Error al cerrar comprobante no fiscal");
@@ -423,7 +419,6 @@ public class HasarSerial extends ImpresoraFiscal {
 
     private void obtenerNumeroSucursal() {
         chequearConexionImpresora();
-
         int nErrorInitData = IPrinter.GetInitData();
         if (nErrorInitData != 0) {
             logger.error("Error al consultar init data!");
@@ -436,13 +431,11 @@ public class HasarSerial extends ImpresoraFiscal {
 
     public String leerRespuestaComando(int numeroCampo) throws Exception {
         chequearConexionImpresora();
-
         return IPrinter.IF_READ(numeroCampo);
     }
 
     public int ejecutarComando(String comando) throws Exception {
         chequearConexionImpresora();
-
         int nError = IPrinter.IF_WRITE(comando);
         if (nError != 0) {
             throw new Exception("Error al ejecutar comando de impresora.");
@@ -454,7 +447,6 @@ public class HasarSerial extends ImpresoraFiscal {
 
     private void pedirEstado() throws Exception {
         chequearConexionImpresora();
-
         int nError = IPrinter.StatusRequest();
         if (nError != 0) {
             throw new Exception("Error al obtener estado impresora");
@@ -463,13 +455,11 @@ public class HasarSerial extends ImpresoraFiscal {
 
     // interaccion server
 
-
     private void chequearConexionImpresora() {
         if (IPrinter == null) {
             logger.error("Driver de impresora no ha sido inicializado");
             throw new RuntimeException("Driver de impresora no ha sido inicializado");
         }
     }
-
 
 }

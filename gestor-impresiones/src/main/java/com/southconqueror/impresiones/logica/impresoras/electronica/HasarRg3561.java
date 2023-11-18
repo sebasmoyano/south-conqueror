@@ -8,6 +8,7 @@ import com.southconqueror.impresiones.logica.utils.AppProperties;
 import hfl.argentina.HasarException;
 import hfl.argentina.HasarImpresoraFiscalRG3561;
 import hfl.argentina.HasarImpresoraFiscalRG3561.*;
+import hfl.argentina.Hasar_Funcs;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -176,7 +177,15 @@ public class HasarRg3561 extends ImpresoraFiscal {
 
     @Override
     public void imprimirComprobanteNoFiscal(ComprobanteNoFiscal comprobanteNoFiscal) throws Exception {
-        // TODO: para ser implementado
+        logger.info("Realizando impresion de comprobante no fiscal " + JsonConverter.objectToString(comprobanteNoFiscal));
+        try {
+            abrirComprobanteNoFiscal();
+            for (String linea : comprobanteNoFiscal.getLineas()) {
+                agregarDetalleComprobanteNoFiscal(linea);
+            }
+        } finally {
+            cerrarDocumento();
+        }
     }
 
     @Override
@@ -339,6 +348,15 @@ public class HasarRg3561 extends ImpresoraFiscal {
     private void setPuntoDeVenta() throws HasarException {
         RespuestaConsultarDatosInicializacion datosInicializacion = impresora.ConsultarDatosInicializacion();
         puntoDeVenta = String.format("%05d", datosInicializacion.getNumeroPos());
+    }
+
+    private void abrirComprobanteNoFiscal() throws Exception {
+        impresora.AbrirDocumento(TiposComprobante.NO_DOCUMENTO);
+    }
+
+    private void agregarDetalleComprobanteNoFiscal(String linea) throws HasarException {
+        Hasar_Funcs.AtributosDeTexto atributosDeTexto = new Hasar_Funcs.AtributosDeTexto();
+        impresora.ImprimirTextoGenerico(atributosDeTexto, linea, ModosDeDisplay.DISPLAY_NO);
     }
 
 
