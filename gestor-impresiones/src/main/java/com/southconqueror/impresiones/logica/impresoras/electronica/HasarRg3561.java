@@ -351,7 +351,7 @@ public class HasarRg3561 extends ImpresoraFiscal {
     }
 
     private void abrirComprobanteNoFiscal() throws Exception {
-        impresora.AbrirDocumento(TiposComprobante.NO_DOCUMENTO);
+        impresora.AbrirDocumento(TiposComprobante.GENERICO);
     }
 
     private void agregarDetalleComprobanteNoFiscal(String linea) throws HasarException {
