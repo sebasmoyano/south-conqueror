@@ -1,0 +1,50 @@
+May 09, 2022 11:53:55 PM hfl.argentina.ProtocolHTTP sendCommand
+INFO: Iniciando conexión: 127.0.0.1:80
+May 09, 2022 11:53:55 PM hfl.argentina.ProtocolHTTP sendCommand
+INFO: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ConsultarEstado>
+<CodigoComprobante>NoDocumento</CodigoComprobante>
+</ConsultarEstado>
+
+May 09, 2022 11:53:55 PM hfl.argentina.ProtocolHTTP sendCommand
+SEVERE: Connection refused (Connection refused)
+May 20, 2022 11:42:15 PM hfl.argentina.ProtocolHTTP sendCommand
+INFO: Iniciando conexión: 127.0.0.1:80
+May 20, 2022 11:42:15 PM hfl.argentina.ProtocolHTTP sendCommand
+INFO: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ConsultarEstado>
+<CodigoComprobante>NoDocumento</CodigoComprobante>
+</ConsultarEstado>
+
+May 20, 2022 11:42:15 PM hfl.argentina.ProtocolHTTP sendCommand
+SEVERE: Connection refused (Connection refused)
+May 20, 2022 11:42:39 PM hfl.argentina.ProtocolHTTP sendCommand
+INFO: Iniciando conexión: 127.0.0.1:80
+May 20, 2022 11:42:39 PM hfl.argentina.ProtocolHTTP sendCommand
+INFO: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ConsultarEstado>
+<CodigoComprobante>NoDocumento</CodigoComprobante>
+</ConsultarEstado>
+
+May 20, 2022 11:42:39 PM hfl.argentina.ProtocolHTTP sendCommand
+SEVERE: Connection refused (Connection refused)
+May 20, 2022 11:43:47 PM hfl.argentina.ProtocolHTTP sendCommand
+INFO: Iniciando conexión: 127.0.0.1:80
+May 20, 2022 11:43:47 PM hfl.argentina.ProtocolHTTP sendCommand
+INFO: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ConsultarEstado>
+<CodigoComprobante>NoDocumento</CodigoComprobante>
+</ConsultarEstado>
+
+May 20, 2022 11:43:47 PM hfl.argentina.ProtocolHTTP sendCommand
+SEVERE: Connection refused (Connection refused)
+May 20, 2022 11:54:23 PM hfl.argentina.ProtocolHTTP sendCommand
+INFO: Iniciando conexión: 127.0.0.1:80
+May 20, 2022 11:54:23 PM hfl.argentina.ProtocolHTTP sendCommand
+INFO: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<CerrarJornadaFiscal>
+<Reporte>ReporteZ</Reporte>
+</CerrarJornadaFiscal>
+
+May 20, 2022 11:54:23 PM hfl.argentina.ProtocolHTTP sendCommand
+SEVERE: Connection refused (Connection refused)

@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 /**
  * Simple Rest client over a unique URI
- *
+ * <p>
  * Created by lefunes on 21/03/16.
  */
 public class SimpleRestClient extends RestClient {
@@ -54,7 +54,7 @@ public class SimpleRestClient extends RestClient {
         return this;
     }
 
-    public static SimpleRestClient uri(String apiUri){
+    public static SimpleRestClient uri(String apiUri) {
         return new SimpleRestClient(apiUri);
     }
 
@@ -99,14 +99,20 @@ public class SimpleRestClient extends RestClient {
         return super.options(null);
     }
 
-    public Json execute(RestMethod method, Json jsonRequest){
-        switch (method){
-            case POST: return post(jsonRequest);
-            case PUT: return put(jsonRequest);
-            case PATCH: return patch(jsonRequest);
-            case DELETE: return delete();
-            case HEAD: return head();
-            case OPTIONS: return options();
+    public Json execute(RestMethod method, Json jsonRequest) {
+        switch (method) {
+            case POST:
+                return post(jsonRequest);
+            case PUT:
+                return put(jsonRequest);
+            case PATCH:
+                return patch(jsonRequest);
+            case DELETE:
+                return delete();
+            case HEAD:
+                return head();
+            case OPTIONS:
+                return options();
         }
         return get();
     }

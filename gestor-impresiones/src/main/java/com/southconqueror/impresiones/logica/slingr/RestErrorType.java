@@ -10,8 +10,7 @@ public enum RestErrorType {
     ARGUMENT_EXCEPTION(1, "Argument invalid"),
     API_EXCEPTION(2, "API exception"),
     CONVERSION_EXCEPTION(3, "Conversion exception"),
-    CLIENT_EXCEPTION(4, "Client handling exception")
-    ;
+    CLIENT_EXCEPTION(4, "Client handling exception");
     private final String code;
     private final String name;
 

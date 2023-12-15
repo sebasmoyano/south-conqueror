@@ -38,15 +38,15 @@ public class RestException extends RuntimeException {
         this.description = description;
         this.details = details;
 
-        if(description instanceof RestException){
+        if (description instanceof RestException) {
             this.error = ((RestException) description).getError();
             this.description = ((RestException) description).getDescription();
         } else {
-            if(error != null) {
+            if (error != null) {
                 this.error = error;
             }
-            if(description instanceof Exception){
-                if(StringUtils.isNotBlank(((Exception) description).getMessage())) {
+            if (description instanceof Exception) {
+                if (StringUtils.isNotBlank(((Exception) description).getMessage())) {
                     this.description = ((Exception) description).getMessage();
                 } else {
                     this.description = description.toString();
@@ -77,11 +77,11 @@ public class RestException extends RuntimeException {
             } else {
                 jsonDescription = Json.fromObject(description);
             }
-        } catch (Exception ex){
+        } catch (Exception ex) {
             logger.debug(String.format("Exception to convert data [%s] to log error", description));
         } finally {
             Object ds = description;
-            if(jsonDescription != null && !jsonDescription.isEmpty()){
+            if (jsonDescription != null && !jsonDescription.isEmpty()) {
                 ds = jsonDescription;
             }
             json.set("description", ds);
@@ -134,10 +134,10 @@ public class RestException extends RuntimeException {
         String cm = processingException.getMessage();
         String lastMessage = cm != null ? cm : "";
         int tries = 10;
-        while(tries > 0 && (cm == null || cm.startsWith("org.apache.http")) && processingException.getCause() != null) {
+        while (tries > 0 && (cm == null || cm.startsWith("org.apache.http")) && processingException.getCause() != null) {
             processingException = processingException.getCause();
             cm = processingException.getMessage();
-            if(StringUtils.isNotBlank(cm)){
+            if (StringUtils.isNotBlank(cm)) {
                 lastMessage = cm;
             }
             tries--;

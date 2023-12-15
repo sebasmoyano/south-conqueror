@@ -37,14 +37,14 @@ public class FormulariosGobiernoManager {
     }
 
     public void crearComprobante(FormularioGobierno formularioGobierno) throws Exception {
-        Document document = new Document(new Rectangle(0, 0,567, 1559));
+        Document document = new Document(new Rectangle(0, 0, 567, 1559));
         String workDirectory = System.getProperty("user.dir");
         File comprobantesHome = new File(workDirectory + "/rotonda");
         if (!comprobantesHome.exists()) {
             comprobantesHome.mkdir();
         }
         String comprobanteId = UUID.randomUUID().toString();
-        String fileName = workDirectory + "/rotonda/formularioGobierno_" +  comprobanteId + ".pdf";
+        String fileName = workDirectory + "/rotonda/formularioGobierno_" + comprobanteId + ".pdf";
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(fileName));
 
         document.open();
@@ -98,7 +98,7 @@ public class FormulariosGobiernoManager {
             x = 212.59872f;
             placeChunk(writer, formularioGobierno.getPatenteCamion(), x, y);
             x = 325.984248f; // 11.5 cm
-            placeChunk(writer, formularioGobierno.getPatenteAcoplado() != null ? formularioGobierno.getPatenteAcoplado() : "" , x, y);
+            placeChunk(writer, formularioGobierno.getPatenteAcoplado() != null ? formularioGobierno.getPatenteAcoplado() : "", x, y);
             y += 14.1732; // 0.5cm
 
             // sexta fila (chofer)

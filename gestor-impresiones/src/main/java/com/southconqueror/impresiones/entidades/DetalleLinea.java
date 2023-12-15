@@ -12,7 +12,7 @@ import org.apache.commons.lang.StringUtils;
  * - Impuestos internos
  * - Parametro display: 0, 1 o 2 {012}
  * - T: precio total; otro caracter: precio base {TBO}
- *
+ * <p>
  * Created by smoyano on 02/01/17.
  */
 public class DetalleLinea {

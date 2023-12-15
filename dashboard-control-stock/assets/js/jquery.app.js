@@ -25,6 +25,7 @@
             }
         });
     }
+
     function initScrollbar() {
         $('.slimscroll').slimscroll({
             height: 'auto',
@@ -33,6 +34,7 @@
             color: '#9ea5ab'
         });
     }
+
     // === following js will activate the menu in left side bar based on url ====
     function initMenuItem() {
         $(".navigation-menu a").each(function () {
@@ -44,6 +46,7 @@
             }
         });
     }
+
     function init() {
         initNavbar();
         initScrollbar();

@@ -52,7 +52,7 @@ public class ComprobantesGenericosManager {
             comprobantesHome.mkdir();
         }
         String comprobanteId = UUID.randomUUID().toString();
-        String fileName = workDirectory + "/comprobantesGenericos/comprobante_" +  comprobanteId + ".pdf";
+        String fileName = workDirectory + "/comprobantesGenericos/comprobante_" + comprobanteId + ".pdf";
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(fileName));
 
         // add footer

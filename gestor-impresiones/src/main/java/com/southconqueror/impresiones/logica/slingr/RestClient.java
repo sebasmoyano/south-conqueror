@@ -45,7 +45,7 @@ public abstract class RestClient {
     /**
      * Constructs a secure RestClient with the given base URI
      *
-     * @param apiUri base URI to build the requests to the API.
+     * @param apiUri                     base URI to build the requests to the API.
      * @param allowSelfSignedCertificate if it is allowed to access HTTPS sites with self signed certificates
      */
     public RestClient(String apiUri, boolean allowSelfSignedCertificate) throws RestException {
@@ -102,7 +102,7 @@ public abstract class RestClient {
      */
     protected void setPath(String path) {
         // add path
-        if(StringUtils.isNotBlank(path)) {
+        if (StringUtils.isNotBlank(path)) {
             this.apiTarget = this.apiTarget.path(path);
         }
     }
@@ -296,7 +296,7 @@ public abstract class RestClient {
                 // in this case need to override content type
                 postData = Entity.entity(content.toString(), (String) apiHeaders.get("Content-Type"));
             } else {
-                if(convertContentToString) {
+                if (convertContentToString) {
                     postData = Entity.json(content.toString());
                 } else {
                     postData = Entity.json(((Json) content).toObject());
@@ -344,7 +344,7 @@ public abstract class RestClient {
         int maxRetries = MAX_RETRIES;
         if (retries != null) {
             maxRetries = retries;
-            if(maxRetries <= 0){
+            if (maxRetries <= 0) {
                 canRetry = false;
             }
         }
@@ -357,7 +357,7 @@ public abstract class RestClient {
             } catch (ProcessingException pe) {
                 retryCount++;
                 if (retryCount >= maxRetries) {
-                    if(pe.getCause() instanceof IOException){
+                    if (pe.getCause() instanceof IOException) {
                         throw new PermanentRestException(RestErrorType.CLIENT_EXCEPTION, String.format("Error processing request [%s]", RestException.getProcessingExceptionMessage(pe)), pe);
                     } else {
                         throw new RetryableRestException(RestErrorType.API_EXCEPTION, String.format("Error processing request [%s]", pe.getMessage()), pe);
@@ -441,7 +441,7 @@ public abstract class RestClient {
 
         logInfo(decorateLog("Successful response from [%s %s]", method.name(), uri));
         if (stringResponse != null && logger.isDebugEnabled()) {
-            if(stringResponse.length() > 7000){
+            if (stringResponse.length() > 7000) {
                 logTrace(decorateLog("Response received from [%s %s]: %s...", method.name(), uri, stringResponse.substring(0, 7000)));
             } else {
                 logTrace(decorateLog("Response received from [%s %s]: %s", method.name(), uri, stringResponse));
@@ -490,7 +490,7 @@ public abstract class RestClient {
     }
 
     protected void logTrace(String message, Throwable exception) {
-        if(silenceLogger){
+        if (silenceLogger) {
             log("TRACE", message, exception);
         } else {
             logger.debug(message, exception);
@@ -502,7 +502,7 @@ public abstract class RestClient {
     }
 
     protected void logDebug(String message, Throwable exception) {
-        if(silenceLogger){
+        if (silenceLogger) {
             log("DEBUG", message, exception);
         } else {
             logger.debug(message, exception);
@@ -514,7 +514,7 @@ public abstract class RestClient {
     }
 
     protected void logInfo(String message, Throwable exception) {
-        if(silenceLogger){
+        if (silenceLogger) {
             log("INFO", message, exception);
         } else {
             logger.info(message, exception);
@@ -526,7 +526,7 @@ public abstract class RestClient {
     }
 
     protected void logWarn(String message, Throwable exception) {
-        if(silenceLogger){
+        if (silenceLogger) {
             log("WARN", message, exception);
         } else {
             logger.warn(message, exception);
@@ -538,18 +538,18 @@ public abstract class RestClient {
     }
 
     protected void logError(String message, Throwable exception) {
-        if(silenceLogger){
+        if (silenceLogger) {
             log("ERROR", message, exception);
         } else {
             logger.error(message, exception);
         }
     }
 
-    protected static String decorateLog(String msg, Object ... args) {
+    protected static String decorateLog(String msg, Object... args) {
         return String.format(msg, args);
     }
 
     private static void log(String level, String message, Throwable exception) {
-        logger.debug("["+level+"] "+message, exception);
+        logger.debug("[" + level + "] " + message, exception);
     }
 }

@@ -7,6 +7,8 @@ package com.southconqueror.impresiones.logica.slingr;
  */
 public interface JsonParameter {
     String getName();
+
     Class getClazz();
+
     boolean isList();
 }

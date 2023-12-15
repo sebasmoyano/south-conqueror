@@ -204,7 +204,7 @@ public class HasarRg3561 extends ImpresoraFiscal {
 
     private void cargarDatosCliente(Comprador comprador) throws Exception {
         logger.info("Cargar datos cliente " + JsonConverter.objectToString(comprador));
-        impresora.CargarDatosCliente(comprador.getNombre(), comprador.getCuit(), getResponsabilidadIva(comprador), TiposDeDocumentoCliente.TIPO_CUIT,comprador.getDomicilioComercial(), null, null, null);
+        impresora.CargarDatosCliente(comprador.getNombre(), comprador.getCuit(), getResponsabilidadIva(comprador), TiposDeDocumentoCliente.TIPO_CUIT, comprador.getDomicilioComercial(), null, null, null);
     }
 
     private String abrirFactura(Factura factura) throws HasarException {
@@ -238,7 +238,7 @@ public class HasarRg3561 extends ImpresoraFiscal {
                 "P",
                 null,
                 HasarImpresoraFiscalRG3561.UnidadesMedida.UNIDAD
-                );
+        );
     }
 
     private String abrirNotaCredito(NotaFiscal notaFiscal) throws HasarException {

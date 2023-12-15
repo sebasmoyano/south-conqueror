@@ -4,7 +4,7 @@ import javax.ws.rs.client.WebTarget;
 
 /**
  * Provides access to the services in the app runtime.
- *
+ * <p>
  * Created by dgaviola on 18/9/15.
  */
 public class SlingrClient extends CommonSlingrClient {

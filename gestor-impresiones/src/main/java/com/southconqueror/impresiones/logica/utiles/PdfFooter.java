@@ -3,6 +3,7 @@ package com.southconqueror.impresiones.logica.utiles;
 /**
  * Created by smoyano on 15/04/17.
  */
+
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
@@ -30,7 +31,7 @@ public class PdfFooter extends PdfPageEventHelper {
         addFooter(writer);
     }
 
-    private void addHeader(PdfWriter writer){
+    private void addHeader(PdfWriter writer) {
         PdfPTable header = new PdfPTable(2);
         try {
             // set defaults
@@ -56,12 +57,12 @@ public class PdfFooter extends PdfPageEventHelper {
 
             // write content
             header.writeSelectedRows(0, -1, 34, 803, writer.getDirectContent());
-        } catch(DocumentException de) {
+        } catch (DocumentException de) {
             throw new ExceptionConverter(de);
         }
     }
 
-    private void addFooter(PdfWriter writer){
+    private void addFooter(PdfWriter writer) {
         PdfPTable footer = new PdfPTable(3);
         try {
             // set defaults
@@ -90,7 +91,7 @@ public class PdfFooter extends PdfPageEventHelper {
             canvas.beginMarkedContentSequence(PdfName.ARTIFACT);
             footer.writeSelectedRows(0, -1, 34, 50, canvas);
             canvas.endMarkedContentSequence();
-        } catch(DocumentException de) {
+        } catch (DocumentException de) {
             throw new ExceptionConverter(de);
         }
     }

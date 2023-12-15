@@ -10,9 +10,8 @@ import org.apache.commons.lang.StringUtils;
  * - Responsabilidad frente al IVA {INEACBMST}
  * - Tipo de documento {CL1234}
  * - Domicilio comercial (max 40 bytes)
- *
+ * <p>
  * Created by smoyano on 02/01/17.
- *
  */
 public class Comprador {
 
@@ -59,7 +58,7 @@ public class Comprador {
     }
 
     public void setDomicilioComercial(String domicilioComercial) {
-        this.domicilioComercial = StringUtils.substring(Utiles.parseString(domicilioComercial),0, 40);
+        this.domicilioComercial = StringUtils.substring(Utiles.parseString(domicilioComercial), 0, 40);
     }
 
 }

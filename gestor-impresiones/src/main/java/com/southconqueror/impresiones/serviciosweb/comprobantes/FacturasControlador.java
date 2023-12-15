@@ -75,7 +75,7 @@ public class FacturasControlador {
     @Path("/ultimoNumero")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response obtenerUltimoNumero(@DefaultValue("B")@QueryParam("tipoFactura") String tipoFactura) {
+    public Response obtenerUltimoNumero(@DefaultValue("B") @QueryParam("tipoFactura") String tipoFactura) {
         logger.info("Recibido request para obtener ultimo nro de factura");
 
         try {

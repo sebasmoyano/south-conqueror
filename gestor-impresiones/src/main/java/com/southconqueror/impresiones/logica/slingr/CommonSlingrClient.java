@@ -5,7 +5,7 @@ import java.io.InputStream;
 
 /**
  * Provides common services for all Idea2 clients like login and reconnection when token expires.
- *
+ * <p>
  * Created by dgaviola on 22/9/15.
  */
 public class CommonSlingrClient extends RestClient {

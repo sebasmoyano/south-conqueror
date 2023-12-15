@@ -36,7 +36,7 @@ public class RestClientFactory {
         return configureClient(new RestClientOptions());
     }
 
-    public static Client configureClient(RestClientOptions options)  {
+    public static Client configureClient(RestClientOptions options) {
         try {
             // pool connection manager
             final PoolingHttpClientConnectionManager connectionManager;

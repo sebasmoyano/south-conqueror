@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * This is the opposite of {@link RetryableRestException}. It is for errors that are permanent
  * and the result won't change it we try several times.
- *
+ * <p>
  * Created by dgaviola on 29/5/15.
  */
 public class PermanentRestException extends RestException {

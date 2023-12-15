@@ -6,7 +6,6 @@
 package com.southconqueror.impresiones.logica.propiedades;
 
 /**
- *
  * @author sebastián
  */
 public class Utiles {

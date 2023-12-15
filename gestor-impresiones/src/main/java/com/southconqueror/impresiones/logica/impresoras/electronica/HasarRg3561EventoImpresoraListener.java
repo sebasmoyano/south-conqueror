@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 public class HasarRg3561EventoImpresoraListener implements PrinterEventListener {
 
     private static Logger logger = LogManager.getLogger(HasarRg3561EventoImpresoraListener.class);
-  
+
     public void statusChanged(PrinterEventObject args) {
         EventoImpresora e = args.getEventoImpresora();
         logger.info("*** Hasar Evento impresora ***");

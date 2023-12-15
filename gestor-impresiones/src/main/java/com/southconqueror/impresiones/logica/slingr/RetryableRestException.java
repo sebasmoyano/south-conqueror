@@ -3,7 +3,7 @@ package com.southconqueror.impresiones.logica.slingr;
 /**
  * This is an exception when calling a REST web service that can be retried. For example if the
  * server returns a 503 it might means that it is not available at the moment but will be later.
- *
+ * <p>
  * Created by dgaviola on 29/5/15.
  */
 public class RetryableRestException extends RestException {

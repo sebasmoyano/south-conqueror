@@ -14,11 +14,9 @@ import java.util.Map;
 /**
  * Created by smoyano on 15/04/17.
  */
-public class MapDeserializer  extends JsonDeserializer<Map<String, String>>
-{
+public class MapDeserializer extends JsonDeserializer<Map<String, String>> {
     @SuppressWarnings("PublicField")
-    private static class Entry
-    {
+    private static class Entry {
         @JsonProperty
         public String key;
         @JsonProperty
@@ -27,9 +25,9 @@ public class MapDeserializer  extends JsonDeserializer<Map<String, String>>
 
     @Override
     public Map<String, String> deserialize(JsonParser jp, DeserializationContext ctxt)
-            throws IOException
-    {
-        List<Entry> list = jp.readValueAs(new TypeReference<List<Entry>>() {});
+            throws IOException {
+        List<Entry> list = jp.readValueAs(new TypeReference<List<Entry>>() {
+        });
         ImmutableMap.Builder<String, String> map = ImmutableMap.builder();
         for (Entry entry : list) {
             map.put(entry.key, entry.value);

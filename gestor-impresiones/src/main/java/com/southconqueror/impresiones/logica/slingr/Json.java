@@ -20,22 +20,22 @@ import java.util.stream.Collectors;
  * <p/>
  * <code>
  * Json.map()
- *   .set("prop1", val1)
- *   .set("prop2", val2)
- *   .set("nested1", Json.map()
- *     .set("prop1", val1)
- *     .set("prop2", val2))
- *   .set("array1", Json.list()
- *     .push("element1")
- *     .push("element2"))
- *   .set("array2", Json.list(users, new Json.ListGenerator() {
- *       public Object element(User user) {
- *         return Json.map()
- *           .set("name", user.getFirstName() + " " + user.getLastName())
- *           .set("email", user.getEmail());
- *       }
- *     })
- *   );
+ * .set("prop1", val1)
+ * .set("prop2", val2)
+ * .set("nested1", Json.map()
+ * .set("prop1", val1)
+ * .set("prop2", val2))
+ * .set("array1", Json.list()
+ * .push("element1")
+ * .push("element2"))
+ * .set("array2", Json.list(users, new Json.ListGenerator() {
+ * public Object element(User user) {
+ * return Json.map()
+ * .set("name", user.getFirstName() + " " + user.getLastName())
+ * .set("email", user.getEmail());
+ * }
+ * })
+ * );
  * </code>
  * <p/>
  * Arrays are still a bit cumbersome, but hopefully this will be better with lambdas in Java 8.
@@ -62,7 +62,7 @@ public class Json {
         // Add the custom serializer to the module
         mod.addSerializer(new CustomSerializer(Json.class));
 
-        OBJECT_MAPPER.registerModule(mod);	// Register the module on the mapper
+        OBJECT_MAPPER.registerModule(mod);    // Register the module on the mapper
     }
 
     public interface ListGenerator<T> {
@@ -195,7 +195,7 @@ public class Json {
             throw new IllegalStateException("Operation not supported for a list");
         }
         final Object o = map.get(prop);
-        if(o != null) {
+        if (o != null) {
             return Json.fromObject(o, false);
         }
         return null;
@@ -237,7 +237,7 @@ public class Json {
                 collect(Collectors.toList());
     }
 
-    public boolean is(String prop){
+    public boolean is(String prop) {
         return Boolean.TRUE.equals(bool(prop));
     }
 
@@ -397,7 +397,7 @@ public class Json {
     public List<Map> toMaps() {
         List<Map> list = new ArrayList<>();
         List l = toList();
-        if(l != null) {
+        if (l != null) {
             for (Object o : l) {
                 list.add(Json.fromObject(o).toMap());
             }
@@ -414,7 +414,7 @@ public class Json {
 
     public Object toObject() {
         final Object object = getJsonValue(this);
-        if(object == null) {
+        if (object == null) {
             return new HashMap<>();
         }
         return object;
@@ -441,12 +441,12 @@ public class Json {
         }
         final Map<String, Object> res = new LinkedHashMap<>();
         map.forEach((k, o) -> {
-            if(o instanceof Json){
-                res.put(k, getJsonValue((Json)o));
-            } else if(o instanceof Map){
-                res.put(k, getMapValue((Map<String, Object>)o));
-            } else if(o instanceof List){
-                res.put(k, getListValue((List<Object>)o));
+            if (o instanceof Json) {
+                res.put(k, getJsonValue((Json) o));
+            } else if (o instanceof Map) {
+                res.put(k, getMapValue((Map<String, Object>) o));
+            } else if (o instanceof List) {
+                res.put(k, getListValue((List<Object>) o));
             } else {
                 res.put(k, o);
             }
@@ -462,12 +462,12 @@ public class Json {
         list.stream()
                 .filter(Objects::nonNull)
                 .forEach(o -> {
-                    if(o instanceof Json){
-                        res.add(getJsonValue((Json)o));
-                    } else if(o instanceof Map){
-                        res.add(getMapValue((Map<String, Object>)o));
-                    } else if(o instanceof List){
-                        res.add(getListValue((List<Object>)o));
+                    if (o instanceof Json) {
+                        res.add(getJsonValue((Json) o));
+                    } else if (o instanceof Map) {
+                        res.add(getMapValue((Map<String, Object>) o));
+                    } else if (o instanceof List) {
+                        res.add(getListValue((List<Object>) o));
                     } else {
                         res.add(o);
                     }
@@ -537,26 +537,26 @@ public class Json {
     }
 
 
-    public static Json fromObject(Object object){
+    public static Json fromObject(Object object) {
         return fromObject(object, true);
     }
 
-    public static Json fromObject(Object object, boolean clone){
-        if(object == null){
+    public static Json fromObject(Object object, boolean clone) {
+        if (object == null) {
             return Json.map();
         }
 
-        if(object instanceof Json){
-            if(clone) {
+        if (object instanceof Json) {
+            if (clone) {
                 return ((Json) object).cloneJson();
             } else {
                 return ((Json) object);
             }
-        } else if(object instanceof Map){
+        } else if (object instanceof Map) {
             return Json.fromMap((Map<String, ? extends Object>) object);
-        } else if(object instanceof List){
+        } else if (object instanceof List) {
             return Json.fromList((List<Object>) object);
-        } else if(object instanceof Set){
+        } else if (object instanceof Set) {
             final List<Object> list = new ArrayList<>();
             for (Object o : (Set) object) {
                 list.add(o);
@@ -573,10 +573,10 @@ public class Json {
     }
 
     public static String objectToString(Object object) {
-        if(object == null) {
+        if (object == null) {
             return NULL_TOKEN;
         }
-        if(object instanceof Json){
+        if (object instanceof Json) {
             return object.toString();
         }
         String result = null;
@@ -658,9 +658,9 @@ public class Json {
         return result;
     }
 
-    public Json cloneJson(){
+    public Json cloneJson() {
         Json json;
-        if(isMap()){
+        if (isMap()) {
             json = Json.fromMap(map);
         } else {
             json = Json.fromList(list);
@@ -684,7 +684,7 @@ public class Json {
     public List<Double> decimals(String prop) {
         List<Double> list = new ArrayList<>();
         List l = list(prop);
-        if(l != null) {
+        if (l != null) {
             for (Object o : l) {
                 if (o instanceof Number) {
                     list.add(((Number) o).doubleValue());
@@ -703,10 +703,10 @@ public class Json {
         public void serialize(Json json, JsonGenerator jsonGenerator, SerializerProvider provider) throws IOException {
             Object obj = json.toObject();
 
-            if(obj instanceof List){
+            if (obj instanceof List) {
                 final JsonSerializer<Object> listSerializer = provider.findValueSerializer(List.class, null);
                 listSerializer.serialize(obj, jsonGenerator, provider);
-            } else if(obj instanceof Map){
+            } else if (obj instanceof Map) {
                 final JsonSerializer<Object> listSerializer = provider.findValueSerializer(Map.class, null);
                 listSerializer.serialize(obj, jsonGenerator, provider);
             } else {
@@ -717,31 +717,31 @@ public class Json {
     }
 
     public Json set(JsonParameter parameter, Object value) {
-        if(parameter == null){
+        if (parameter == null) {
             throw new IllegalArgumentException("Parameter is null");
         }
 
         // validating value
-        if(value != null) {
+        if (value != null) {
             final Class clazz = parameter.getClazz();
             if (!parameter.isList()) {
-                if (clazz.equals(String.class)){
+                if (clazz.equals(String.class)) {
                     value = value.toString();
-                } else if (clazz.equals(Boolean.class)){
+                } else if (clazz.equals(Boolean.class)) {
                     value = getBoolean(value);
-                } else if (clazz.equals(Date.class)){
+                } else if (clazz.equals(Date.class)) {
                     value = getDate(value);
-                } else if (clazz.equals(Double.class) || clazz.equals(Float.class) || clazz.equals(Number.class)){
+                } else if (clazz.equals(Double.class) || clazz.equals(Float.class) || clazz.equals(Number.class)) {
                     value = getDouble(value);
-                } else if (clazz.equals(Integer.class) || clazz.equals(Short.class)){
+                } else if (clazz.equals(Integer.class) || clazz.equals(Short.class)) {
                     value = getInteger(value);
-                } else if (clazz.equals(Long.class)){
+                } else if (clazz.equals(Long.class)) {
                     value = getLong(value);
-                } else if (clazz.equals(Json.class)){
+                } else if (clazz.equals(Json.class)) {
                     value = fromObject(value, false);
-                } else if (clazz.equals(List.class)){
+                } else if (clazz.equals(List.class)) {
                     value = fromObject(value, false).toList();
-                } else if (clazz.equals(Map.class)){
+                } else if (clazz.equals(Map.class)) {
                     value = fromObject(value, false).toMap();
                 }
             } else {
@@ -770,20 +770,20 @@ public class Json {
 
     public Json setIfNotEmpty(JsonParameter parameter, Object value) {
         if (value != null) {
-            if(value instanceof Json){
-                if(! ((Json) value).isEmpty()){
+            if (value instanceof Json) {
+                if (!((Json) value).isEmpty()) {
                     return set(parameter, value);
                 }
-            } else if(value instanceof String){
-                if(StringUtils.isNotBlank((String) value)){
+            } else if (value instanceof String) {
+                if (StringUtils.isNotBlank((String) value)) {
                     return set(parameter, value);
                 }
-            } else if(value instanceof Collection){
-                if(!((Collection) value).isEmpty()){
+            } else if (value instanceof Collection) {
+                if (!((Collection) value).isEmpty()) {
                     return set(parameter, value);
                 }
-            } else if(value instanceof Map){
-                if(!((Map) value).isEmpty()){
+            } else if (value instanceof Map) {
+                if (!((Map) value).isEmpty()) {
                     return set(parameter, value);
                 }
             } else {
@@ -794,13 +794,13 @@ public class Json {
     }
 
     private Date getDate(Object o) {
-        if(o == null){
+        if (o == null) {
             return null;
-        } else if(o instanceof Date){
+        } else if (o instanceof Date) {
             return (Date) o;
         } else {
             Long l = getLong(o);
-            if(l != null) {
+            if (l != null) {
                 return new Date(l);
             } else {
                 return null;
@@ -809,7 +809,7 @@ public class Json {
     }
 
     private Integer getInteger(Object o) {
-        if(o == null){
+        if (o == null) {
             return null;
         } else if (o instanceof Integer) {
             return (Integer) o;
@@ -823,7 +823,7 @@ public class Json {
     }
 
     private Long getLong(Object o) {
-        if(o == null){
+        if (o == null) {
             return null;
         } else if (o instanceof Long) {
             return (Long) o;
@@ -837,7 +837,7 @@ public class Json {
     }
 
     private Double getDouble(Object o) {
-        if(o == null){
+        if (o == null) {
             return null;
         } else if (o instanceof Double) {
             return (Double) o;
@@ -851,13 +851,13 @@ public class Json {
     }
 
     private Boolean getBoolean(Object o) {
-        if(o == null){
+        if (o == null) {
             return null;
-        } else if(o instanceof Boolean){
+        } else if (o instanceof Boolean) {
             return (Boolean) o;
         } else if (o instanceof Number) {
             return ((Number) o).longValue() != 0;
-        } else if(o instanceof String){
+        } else if (o instanceof String) {
             return Boolean.parseBoolean((String) o);
         } else {
             return Boolean.parseBoolean(o.toString());
@@ -866,8 +866,8 @@ public class Json {
 
     // parameters: gets (string, bool, date, decimal, integer, json, map, list)
 
-    public <T> T get(JsonParameter parameter){
-        if(parameter == null){
+    public <T> T get(JsonParameter parameter) {
+        if (parameter == null) {
             throw new IllegalArgumentException("Parameter is null");
         }
 
@@ -875,35 +875,35 @@ public class Json {
         final Class<T> clazz = parameter.getClazz();
         final boolean list = parameter.isList();
 
-        if (clazz.equals(String.class) && !list){
+        if (clazz.equals(String.class) && !list) {
             return (T) string(name);
-        } else if (clazz.equals(String.class)){
+        } else if (clazz.equals(String.class)) {
             return (T) strings(name);
-        } else if (clazz.equals(Boolean.class) && !list){
+        } else if (clazz.equals(Boolean.class) && !list) {
             return (T) bool(name);
-        } else if (clazz.equals(Boolean.class)){
+        } else if (clazz.equals(Boolean.class)) {
             return (T) bools(name);
-        } else if (clazz.equals(Date.class) && !list){
+        } else if (clazz.equals(Date.class) && !list) {
             return (T) date(name);
-        } else if (clazz.equals(Date.class)){
+        } else if (clazz.equals(Date.class)) {
             return (T) dates(name);
-        } else if ((clazz.equals(Double.class) || clazz.equals(Float.class) || clazz.equals(Number.class)) && !list){
+        } else if ((clazz.equals(Double.class) || clazz.equals(Float.class) || clazz.equals(Number.class)) && !list) {
             return (T) decimal(name);
-        } else if (clazz.equals(Double.class) || clazz.equals(Float.class) || clazz.equals(Number.class)){
+        } else if (clazz.equals(Double.class) || clazz.equals(Float.class) || clazz.equals(Number.class)) {
             return (T) decimals(name);
-        } else if (clazz.equals(Integer.class) || clazz.equals(Short.class)){
+        } else if (clazz.equals(Integer.class) || clazz.equals(Short.class)) {
             return (T) integers(name);
-        } else if (clazz.equals(Long.class)){
+        } else if (clazz.equals(Long.class)) {
             return (T) longs(name);
-        } else if (clazz.equals(Json.class) && !list){
+        } else if (clazz.equals(Json.class) && !list) {
             return (T) json(name);
-        } else if (clazz.equals(Json.class)){
+        } else if (clazz.equals(Json.class)) {
             return (T) jsons(name);
-        } else if (clazz.equals(List.class)){
+        } else if (clazz.equals(List.class)) {
             return (T) list(name);
-        } else if (clazz.equals(Map.class)){
+        } else if (clazz.equals(Map.class)) {
             return (T) map(name);
-        } else if(!list) {
+        } else if (!list) {
             return (T) object(name);
         } else {
             return (T) objects(name);
@@ -912,9 +912,9 @@ public class Json {
 
     public List<? extends Object> list(String prop) {
         Object object = object(prop);
-        if(object instanceof Json){
+        if (object instanceof Json) {
             return ((Json) object).toList();
-        } else if(object instanceof List){
+        } else if (object instanceof List) {
             return (List) object;
         }
         return null;
@@ -922,9 +922,9 @@ public class Json {
 
     public Map map(String prop) {
         Object object = object(prop);
-        if(object instanceof Json){
+        if (object instanceof Json) {
             return ((Json) object).toMap();
-        } else if(object != null) {
+        } else if (object != null) {
             return (Map) object;
         }
         return null;
@@ -932,7 +932,7 @@ public class Json {
 
     public String string(JsonParameter parameter) {
         Object o = get(parameter);
-        if(o != null) {
+        if (o != null) {
             return o.toString();
         } else {
             return null;
@@ -943,7 +943,7 @@ public class Json {
         return get(parameter);
     }
 
-    public boolean is(JsonParameter prop){
+    public boolean is(JsonParameter prop) {
         return Boolean.TRUE.equals(bool(prop));
     }
 
@@ -997,10 +997,10 @@ public class Json {
 
     public static class Visitor {
 
-        public void visit(String key, Object value, String path) {}
+        public void visit(String key, Object value, String path) {
+        }
 
     }
-
 
 
 }
