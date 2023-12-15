@@ -9,8 +9,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +26,7 @@ public class MedicionesService {
     @Value("${productoId}")
     private String productoId;
 
-    private final static String apiUrl = "https://canteras.slingrs.io/dev/runtime/api/data/mediciones";
+    private final static String apiUrl = "https://canteras.slingrs.io/dev/runtime/api/data/produccion.medicion";
 
     @Autowired
     public MedicionesService(JdbcTemplate jdbcTemplate, RestTemplate restTemplate) {
@@ -51,9 +49,9 @@ public class MedicionesService {
 
     private void enviarMedicionALaAPI(Map<String, Object> ultimaMedicion) {
         Map<String, Object> medicion = new HashMap<>();
-        medicion.put("cintaId", cintaId);
-        medicion.put("productoId", productoId);
-        medicion.put("valor", "5500"); // TODO: change this
+        medicion.put("cinta", cintaId);
+        medicion.put("producto", productoId);
+        medicion.put("valor", 5500); // TODO: change this
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.add("token", "5WPGVUHe8oYmPkmmkJXeJsB4EpanLzas");
