@@ -1,0 +1,151 @@
+00:31:46.952 [main] INFO  c.s.conector.MedicionesApplication - Inicializando aplicación para cinta: cinta1 y producto: arenaMediana
+00:31:47.493 [main] INFO  c.s.conector.MedicionesApplication - Starting MedicionesApplication using Java 11.0.21 on smoyano-desktop with PID 143785 (/home/smoyano/myprojects/south-conqueror/conector-balanza/target/classes started by smoyano in /home/smoyano/myprojects/south-conqueror/conector-balanza)
+00:31:47.494 [main] INFO  c.s.conector.MedicionesApplication - No active profile set, falling back to default profiles: default
+00:31:48.140 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:31:48.153 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+00:31:48.592 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:31:48.601 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:31:48.601 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:31:48.601 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+00:31:48.658 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:31:48.658 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1109 ms
+00:31:48.805 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:31:49.076 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:31:49.109 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:31:49.138 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final
+00:31:49.256 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+00:31:49.362 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+00:31:49.477 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:31:49.484 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:31:49.560 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:31:49.836 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:31:49.846 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+00:31:49.856 [main] INFO  c.s.conector.MedicionesApplication - Started MedicionesApplication in 2.804 seconds (JVM running for 3.203)
+00:34:47.209 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+00:34:47.212 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+00:34:47.223 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+00:34:54.153 [main] INFO  c.s.conector.MedicionesApplication - Inicializando aplicación para cinta: cinta1 y producto: arenaMediana
+00:34:54.599 [main] INFO  c.s.conector.MedicionesApplication - Starting MedicionesApplication using Java 11.0.21 on smoyano-desktop with PID 144129 (/home/smoyano/myprojects/south-conqueror/conector-balanza/target/classes started by smoyano in /home/smoyano/myprojects/south-conqueror/conector-balanza)
+00:34:54.599 [main] INFO  c.s.conector.MedicionesApplication - No active profile set, falling back to default profiles: default
+00:34:55.206 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:34:55.220 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 5 ms. Found 0 JPA repository interfaces.
+00:34:55.718 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:34:55.729 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:34:55.729 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:34:55.729 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+00:34:55.794 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:34:55.795 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1150 ms
+00:34:55.942 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:34:56.281 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:34:56.328 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:34:56.364 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final
+00:34:56.508 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+00:34:56.610 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+00:34:56.745 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:34:56.754 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:34:56.882 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:34:57.172 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:34:57.184 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+00:34:57.196 [main] INFO  c.s.conector.MedicionesApplication - Started MedicionesApplication in 2.939 seconds (JVM running for 4.225)
+00:35:09.818 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.jdbc.BadSqlGrammarException: StatementCallback; bad SQL grammar [SELECT * FROM mediciones ORDER BY id DESC LIMIT 1]; nested exception is java.sql.SQLSyntaxErrorException: Table 'balanza.mediciones' doesn't exist
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
+	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1541)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:393)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:465)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:475)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:508)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:44)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'balanza.mediciones' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeQuery(StatementImpl.java:1201)
+	at com.zaxxer.hikari.pool.ProxyStatement.executeQuery(ProxyStatement.java:110)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.executeQuery(HikariProxyStatement.java)
+	at org.springframework.jdbc.core.JdbcTemplate$1QueryStatementCallback.doInStatement(JdbcTemplate.java:452)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:381)
+	... 19 common frames omitted
+00:36:06.059 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.jdbc.BadSqlGrammarException: StatementCallback; bad SQL grammar [SELECT * FROM mediciones ORDER BY id DESC LIMIT 1]; nested exception is java.sql.SQLSyntaxErrorException: Table 'balanza.mediciones' doesn't exist
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
+	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1541)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:393)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:465)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:475)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:508)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:44)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'balanza.mediciones' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeQuery(StatementImpl.java:1201)
+	at com.zaxxer.hikari.pool.ProxyStatement.executeQuery(ProxyStatement.java:110)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.executeQuery(HikariProxyStatement.java)
+	at org.springframework.jdbc.core.JdbcTemplate$1QueryStatementCallback.doInStatement(JdbcTemplate.java:452)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:381)
+	... 19 common frames omitted
+00:37:33.140 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.jdbc.BadSqlGrammarException: StatementCallback; bad SQL grammar [SELECT * FROM mediciones ORDER BY id DESC LIMIT 1]; nested exception is java.sql.SQLSyntaxErrorException: Table 'balanza.mediciones' doesn't exist
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
+	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1541)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:393)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:465)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:475)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:508)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:44)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'balanza.mediciones' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeQuery(StatementImpl.java:1201)
+	at com.zaxxer.hikari.pool.ProxyStatement.executeQuery(ProxyStatement.java:110)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.executeQuery(HikariProxyStatement.java)
+	at org.springframework.jdbc.core.JdbcTemplate$1QueryStatementCallback.doInStatement(JdbcTemplate.java:452)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:381)
+	... 19 common frames omitted
