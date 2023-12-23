@@ -13,7 +13,7 @@ public class MedicionesApplication {
     private static final Logger logger = LoggerFactory.getLogger(MedicionesApplication.class);
 
     public static void main(String[] args) {
-        logger.info("Inicializando aplicación para cinta: {} y producto: {}", args[0], args[1]);
+        logger.info("Inicializando conector para cinta");
         SpringApplication.run(MedicionesApplication.class, args);
     }
 }

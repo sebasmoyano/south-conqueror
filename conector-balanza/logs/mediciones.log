@@ -684,3 +684,547 @@ org.springframework.web.client.HttpClientErrorException$NotFound: 404 Not Found:
 00:58:33.774 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 00:58:33.777 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 00:58:33.789 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+00:06:04.427 [main] INFO  c.s.conector.MedicionesApplication - Inicializando conector para cinta
+00:06:04.824 [main] INFO  c.s.conector.MedicionesApplication - Starting MedicionesApplication using Java 11.0.21 on smoyano-desktop with PID 78020 (/home/smoyano/myprojects/south-conqueror/conector-balanza/target/classes started by smoyano in /home/smoyano/myprojects/south-conqueror/conector-balanza)
+00:06:04.825 [main] INFO  c.s.conector.MedicionesApplication - No active profile set, falling back to default profiles: default
+00:06:05.294 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:06:05.304 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+00:06:05.604 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:06:05.609 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:06:05.609 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:06:05.609 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+00:06:05.661 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:06:05.661 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 801 ms
+00:06:05.752 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:06:06.019 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:06:06.047 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:06:06.084 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final
+00:06:06.206 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+00:06:06.272 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+00:06:06.351 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:06:06.356 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:06:06.403 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:06:06.579 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:06:06.585 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+00:06:06.594 [main] INFO  c.s.conector.MedicionesApplication - Started MedicionesApplication in 2.078 seconds (JVM running for 2.628)
+00:07:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:07:00.114 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312151132E9, ACUM_=0, VELOC_=1.30666, FLUJO_=0.0}
+00:07:00.115 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {valor=0, codigoProducto=arena}
+00:07:01.506 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"65864ed5bc18955f197e9768","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fecha":1703300821339,"codigoProducto":"arena","valor":0.0,"valorToneladas":0.0},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703300419252", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node0yav1lq5oxlh1hprg1mgom4ua95.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:07:01 GMT", Transfer-Encoding:"chunked"]>
+00:07:36.741 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+00:07:36.743 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+00:07:36.752 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+00:07:45.483 [main] INFO  c.s.conector.MedicionesApplication - Inicializando conector para cinta
+00:07:45.773 [main] INFO  c.s.conector.MedicionesApplication - Starting MedicionesApplication using Java 11.0.21 on smoyano-desktop with PID 78142 (/home/smoyano/myprojects/south-conqueror/conector-balanza/target/classes started by smoyano in /home/smoyano/myprojects/south-conqueror/conector-balanza)
+00:07:45.774 [main] INFO  c.s.conector.MedicionesApplication - No active profile set, falling back to default profiles: default
+00:07:46.178 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:07:46.186 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+00:07:46.504 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:07:46.510 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:07:46.511 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:07:46.511 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+00:07:46.558 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:07:46.558 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 745 ms
+00:07:46.656 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:07:46.880 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:07:46.929 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:07:46.960 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final
+00:07:47.038 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+00:07:47.104 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+00:07:47.180 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:07:47.188 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:07:47.277 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:07:47.473 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:07:47.480 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+00:07:47.492 [main] INFO  c.s.conector.MedicionesApplication - Started MedicionesApplication in 1.939 seconds (JVM running for 3.342)
+00:08:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:15:20.012 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m33s30ms922µs569ns).
+00:15:20.012 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312151132E9, ACUM_=0, VELOC_=1.30666, FLUJO_=0.0}
+00:15:20.023 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {valor=0, codigoProducto=arena}
+00:15:20.919 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"658650c8bc18955f197ea3b3","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fecha":1703301320739,"codigoProducto":"arena","valor":0.0,"valorToneladas":0.0},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703300811551", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node066s7wqasarx01betauc82bfpv96.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:15:20 GMT", Transfer-Encoding:"chunked"]>
+00:15:21.898 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+00:15:21.900 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+00:15:21.909 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+00:15:28.308 [main] INFO  c.s.conector.MedicionesApplication - Inicializando conector para cinta
+00:15:28.657 [main] INFO  c.s.conector.MedicionesApplication - Starting MedicionesApplication using Java 11.0.21 on smoyano-desktop with PID 78568 (/home/smoyano/myprojects/south-conqueror/conector-balanza/target/classes started by smoyano in /home/smoyano/myprojects/south-conqueror/conector-balanza)
+00:15:28.657 [main] INFO  c.s.conector.MedicionesApplication - No active profile set, falling back to default profiles: default
+00:15:29.058 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:15:29.065 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+00:15:29.386 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:15:29.392 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:15:29.392 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:15:29.392 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+00:15:29.432 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:15:29.432 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 734 ms
+00:15:29.526 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:15:29.742 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:15:29.789 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:15:29.816 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final
+00:15:29.900 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+00:15:29.969 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+00:15:30.053 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:15:30.060 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:15:30.119 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:15:30.310 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:15:30.318 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+00:15:30.330 [main] INFO  c.s.conector.MedicionesApplication - Started MedicionesApplication in 1.942 seconds (JVM running for 2.625)
+00:16:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:16:19.734 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312142359E9, ACUM_=285853, VELOC_=1.30666, FLUJO_=0.0}
+00:16:19.741 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {valor=285853, codigoProducto=arena}
+00:16:21.137 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"65865104bc18955f197ea3b6","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fecha":1703301380956,"codigoProducto":"arena","valor":285853.0,"valorToneladas":285.853},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703300811551", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node02da5hw3qj5re1ia8fe197guq897.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:16:20 GMT", Transfer-Encoding:"chunked"]>
+00:17:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:17:14.674 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312142359E9, ACUM_=285853, VELOC_=1.30666, FLUJO_=0.0}
+00:17:14.675 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {valor=285853, codigoProducto=arena}
+00:17:15.493 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"6586513bbc18955f197ea3bb","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fecha":1703301435319,"codigoProducto":"arena","valor":285853.0,"valorToneladas":285.853},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703300811551", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node01sjcdmyszwde3hwvz45q1qorm98.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:17:15 GMT", Transfer-Encoding:"chunked"]>
+00:18:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:18:34.536 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312142359E9, ACUM_=285853, VELOC_=1.30666, FLUJO_=0.0}
+00:18:34.536 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {valor=285853, codigoProducto=arena}
+00:18:36.096 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"6586518bbc18955f197ea45d","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fecha":1703301515908,"codigoProducto":"arena","valor":285853.0,"valorToneladas":285.853},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703301426602", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node0131znfsptobjw1xn4so121seg199.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:18:35 GMT", Transfer-Encoding:"chunked"]>
+00:19:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:19:00.044 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312142359E9, ACUM_=285853, VELOC_=1.30666, FLUJO_=0.0}
+00:19:00.044 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {valor=285853, codigoProducto=arena}
+00:19:00.866 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"658651a4bc18955f197ea460","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fecha":1703301540693,"codigoProducto":"arena","valor":285853.0,"valorToneladas":285.853},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703301426602", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node01sbafcr4u1agie7inkdc4unm100.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:19:00 GMT", Transfer-Encoding:"chunked"]>
+00:20:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:20:00.083 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312142359E9, ACUM_=285853, VELOC_=1.30666, FLUJO_=0.0}
+00:20:00.083 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {valor=285853, codigoProducto=arena}
+00:20:01.386 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"658651e1bc18955f197ea470","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fecha":1703301601208,"codigoProducto":"arena","valor":285853.0,"valorToneladas":285.853},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703301597729", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node01rr4st62luvx41j8w6b3hmbpgn101.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:20:01 GMT", Transfer-Encoding:"chunked"]>
+00:21:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:21:00.057 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312142359E9, ACUM_=285853, VELOC_=1.30666, FLUJO_=0.0}
+00:21:00.057 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {valor=285853, codigoProducto=arena}
+00:21:01.122 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"6586521cbc18955f197ea473","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fecha":1703301660925,"codigoProducto":"arena","valor":285853.0,"valorToneladas":285.853},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703301597729", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node01ffb6q0luuq20wb0n0av6w4tq102.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:21:00 GMT", Transfer-Encoding:"chunked"]>
+00:22:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:22:00.080 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312142359E9, ACUM_=285853, VELOC_=1.30666, FLUJO_=0.0}
+00:22:00.080 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {valor=285853, codigoProducto=arena}
+00:22:01.831 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"65865259bc18955f197eb2d1","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fecha":1703301721644,"codigoProducto":"arena","valor":285853.0,"valorToneladas":285.853},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703301653691", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node01oc203czguz7fvfiic8c68lyg103.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:22:01 GMT", Transfer-Encoding:"chunked"]>
+00:23:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:23:00.059 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312142359E9, ACUM_=285853, VELOC_=1.30666, FLUJO_=0.0}
+00:23:00.059 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {valor=285853, codigoProducto=arena}
+00:23:00.745 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"65865294bc18955f197eb2d4","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fecha":1703301780555,"codigoProducto":"arena","valor":285853.0,"valorToneladas":285.853},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703301653691", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node0103pvksdrq31g1k7fhz2cnjbc104.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:23:00 GMT", Transfer-Encoding:"chunked"]>
+00:24:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:24:00.079 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312142359E9, ACUM_=285853, VELOC_=1.30666, FLUJO_=0.0}
+00:24:00.080 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {valor=285853, codigoProducto=arena}
+00:24:01.602 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"658652d1bc18955f197eb2d7","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fecha":1703301841408,"codigoProducto":"arena","valor":285853.0,"valorToneladas":285.853},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703301653691", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node0a5bjnbfwz0wqv6q7gnnc38f0105.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:24:01 GMT", Transfer-Encoding:"chunked"]>
+00:24:56.433 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+00:24:56.435 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+00:24:56.442 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+00:24:58.984 [main] INFO  c.s.conector.MedicionesApplication - Inicializando conector para cinta
+00:24:59.350 [main] INFO  c.s.conector.MedicionesApplication - Starting MedicionesApplication using Java 11.0.21 on smoyano-desktop with PID 78874 (/home/smoyano/myprojects/south-conqueror/conector-balanza/target/classes started by smoyano in /home/smoyano/myprojects/south-conqueror/conector-balanza)
+00:24:59.351 [main] INFO  c.s.conector.MedicionesApplication - No active profile set, falling back to default profiles: default
+00:24:59.759 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:24:59.767 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+00:25:00.100 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:25:00.107 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:25:00.108 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:25:00.108 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+00:25:00.162 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:25:00.163 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 775 ms
+00:25:00.280 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:25:00.573 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:25:00.672 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:25:00.703 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final
+00:25:00.806 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+00:25:00.887 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+00:25:00.972 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:25:00.979 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:25:01.038 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:25:01.262 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:25:01.269 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+00:25:01.280 [main] INFO  c.s.conector.MedicionesApplication - Started MedicionesApplication in 2.206 seconds (JVM running for 2.903)
+00:26:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:26:00.108 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312142359E9, ACUM_=285853}
+00:26:00.109 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {fechaMedicion=2.312142359E9, valor=285853, codigoProducto=arena}
+00:26:01.054 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"65865348bc18955f197ee447","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fechaCreacion":1703301960846,"fechaMedicion":"2.312142359E9","codigoProducto":"arena","valor":285853.0,"valorToneladas":285.853},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703301713340", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node0rjpl8b064qgj111fado4wl58c106.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:26:00 GMT", Transfer-Encoding:"chunked"]>
+00:27:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:28:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:28:29.360 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58s684ms143µs332ns).
+00:29:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:30:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:31:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:32:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:32:38.162 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+00:32:38.164 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+00:32:38.171 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+00:32:40.841 [main] INFO  c.s.conector.MedicionesApplication - Inicializando conector para cinta
+00:32:41.194 [main] INFO  c.s.conector.MedicionesApplication - Starting MedicionesApplication using Java 11.0.21 on smoyano-desktop with PID 79509 (/home/smoyano/myprojects/south-conqueror/conector-balanza/target/classes started by smoyano in /home/smoyano/myprojects/south-conqueror/conector-balanza)
+00:32:41.195 [main] INFO  c.s.conector.MedicionesApplication - No active profile set, falling back to default profiles: default
+00:32:41.678 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:32:41.688 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+00:32:42.021 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:32:42.026 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:32:42.026 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:32:42.026 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+00:32:42.071 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:32:42.071 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 839 ms
+00:32:42.167 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:32:42.421 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:32:42.470 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:32:42.504 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final
+00:32:42.597 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+00:32:42.672 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+00:32:42.760 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:32:42.767 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:32:42.828 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:32:43.046 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:32:43.053 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+00:32:43.064 [main] INFO  c.s.conector.MedicionesApplication - Started MedicionesApplication in 2.148 seconds (JVM running for 2.865)
+00:33:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:33:00.101 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312142359E9, ACUM_=285853}
+00:33:00.102 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {fechaMedicion=2312142359, valor=285853, codigoProducto=arena}
+00:33:01.156 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"658654ecbc18955f197ee459","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fechaCreacion":1703302380963,"fechaMedicion":"2312142359","codigoProducto":"arena","valor":285853.0,"valorToneladas":285.853},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703301713340", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node01irmfc8ta3kr47qfqwnjoyc09107.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:33:00 GMT", Transfer-Encoding:"chunked"]>
+00:34:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:35:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:36:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:36:45.516 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+00:36:45.518 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+00:36:45.526 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+00:36:48.085 [main] INFO  c.s.conector.MedicionesApplication - Inicializando conector para cinta
+00:36:48.429 [main] INFO  c.s.conector.MedicionesApplication - Starting MedicionesApplication using Java 11.0.21 on smoyano-desktop with PID 79648 (/home/smoyano/myprojects/south-conqueror/conector-balanza/target/classes started by smoyano in /home/smoyano/myprojects/south-conqueror/conector-balanza)
+00:36:48.429 [main] INFO  c.s.conector.MedicionesApplication - No active profile set, falling back to default profiles: default
+00:36:48.816 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:36:48.825 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+00:36:49.148 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:36:49.154 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:36:49.154 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:36:49.154 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+00:36:49.197 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:36:49.198 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 727 ms
+00:36:49.293 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:36:49.527 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:36:49.575 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:36:49.598 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final
+00:36:49.677 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+00:36:49.745 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+00:36:49.826 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:36:49.832 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:36:49.884 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:36:50.083 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:36:50.091 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+00:36:50.101 [main] INFO  c.s.conector.MedicionesApplication - Started MedicionesApplication in 1.934 seconds (JVM running for 2.625)
+00:37:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:37:00.101 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición arena: {AUX_IN=2.312142359E9, ACUM_=285853}
+00:37:00.103 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {fechaMedicion=2312142359, valor=285853, codigoProducto=arena}
+00:37:01.499 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"658655ddbc18955f197f0358","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fechaCreacion":1703302621331,"fechaMedicion":"2312142359","codigoProducto":"arena","valor":285853.0,"valorToneladas":285.85},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703302457697", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node0ro0e63mwoe4y1fsfl324trgfz108.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:37:01 GMT", Transfer-Encoding:"chunked"]>
+00:37:01.500 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:37:01.507 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:97)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+00:38:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:38:00.078 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:38:00.078 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:97)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+00:39:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:39:00.052 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:39:00.053 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:97)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+00:40:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:40:00.062 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:40:00.063 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:97)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+00:41:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:41:00.055 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:41:00.056 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:97)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+00:42:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:42:00.075 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:42:00.075 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:97)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+00:43:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:43:00.073 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:43:00.074 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:97)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+00:44:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:44:00.052 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:44:00.053 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:97)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+00:45:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:45:00.072 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:45:00.073 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:97)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+00:46:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:46:00.077 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:46:00.078 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:97)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+00:47:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:47:00.073 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:47:00.074 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:97)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+00:48:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:48:00.051 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:48:03.899 [scheduling-1] ERROR c.s.conector.MedicionesService - Error al leer y enviar la medición
+org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: expected 1, actual 0
+	at org.springframework.dao.support.DataAccessUtils.nullableSingleResult(DataAccessUtils.java:97)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:509)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForMap(JdbcTemplate.java:502)
+	at com.southconqueror.conector.MedicionesService.leerYEnviarMedicion(MedicionesService.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+00:48:03.961 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+00:48:03.963 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+00:48:03.971 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+00:55:09.024 [main] INFO  c.s.conector.MedicionesApplication - Inicializando conector para cinta
+00:55:09.358 [main] INFO  c.s.conector.MedicionesApplication - Starting MedicionesApplication using Java 11.0.21 on smoyano-desktop with PID 80205 (/home/smoyano/myprojects/south-conqueror/conector-balanza/target/classes started by smoyano in /home/smoyano/myprojects/south-conqueror/conector-balanza)
+00:55:09.359 [main] INFO  c.s.conector.MedicionesApplication - No active profile set, falling back to default profiles: default
+00:55:09.773 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:55:09.782 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+00:55:10.097 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:55:10.102 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:55:10.102 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:55:10.102 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+00:55:10.139 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:55:10.140 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 742 ms
+00:55:10.230 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:55:10.438 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:55:10.477 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:55:10.511 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final
+00:55:10.597 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+00:55:10.665 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+00:55:10.757 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:55:10.764 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:55:10.820 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:55:11.026 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:55:11.034 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+00:55:11.043 [main] INFO  c.s.conector.MedicionesApplication - Started MedicionesApplication in 1.94 seconds (JVM running for 2.721)
+00:56:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:56:00.096 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición producto: {AUX_IN=2.312142359E9, ACUM_=285853}
+00:56:00.098 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {fechaMedicion=2312142359, valor=285853, codigoProducto=arena}
+00:56:00.929 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"65865a50bc18955f197f0370","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fechaCreacion":1703303760773,"fechaMedicion":"2312142359","codigoProducto":"arena","valor":285853.0,"valorToneladas":285.85},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703302457697", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node0147os5cfzidly1nfugwyx9cba7109.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:56:00 GMT", Transfer-Encoding:"chunked"]>
+00:56:00.930 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaMediana
+00:56:00.934 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición producto: {AUX_IN=2.312022331E9, ACUM_=4016}
+00:56:00.934 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {fechaMedicion=2312022331, valor=4016, codigoProducto=arenaMediana}
+00:56:01.633 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"65865a51bc18955f197f0373","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fechaCreacion":1703303761487,"fechaMedicion":"2312022331","codigoProducto":"arenaMediana","valor":4016.0,"valorToneladas":4.02},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703302457697", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node01g27bmwioo18u1lhlyl6cq13qc110.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:56:01 GMT", Transfer-Encoding:"chunked"]>
+00:56:01.634 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaNatural
+00:56:01.638 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición producto: {AUX_IN=2.312022326E9, ACUM_=4446}
+00:56:01.639 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {fechaMedicion=2312022326, valor=4446, codigoProducto=arenaNatural}
+00:56:02.332 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"65865a52bc18955f197f0376","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fechaCreacion":1703303762184,"fechaMedicion":"2312022326","codigoProducto":"arenaNatural","valor":4446.0,"valorToneladas":4.45},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703302457697", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node0ysxg1qv24icx1l14dvvwza01x111.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:56:02 GMT", Transfer-Encoding:"chunked"]>
+00:56:02.332 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición clarga
+00:56:02.404 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición producto: {AUX_IN=2.312142359E9, ACUM_=485495}
+00:56:02.404 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {fechaMedicion=2312142359, valor=485495, codigoProducto=clarga}
+00:56:03.067 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"65865a52bc18955f197f0379","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fechaCreacion":1703303762922,"fechaMedicion":"2312142359","codigoProducto":"clarga","valor":485495.0,"valorToneladas":485.5},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703302457697", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node033d9iaqyh3jz1w5l3nrzywj7g112.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:56:02 GMT", Transfer-Encoding:"chunked"]>
+00:56:03.067 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición piedraBola
+00:56:03.139 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición producto: {AUX_IN=2.312142359E9, ACUM_=115202}
+00:56:03.139 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {fechaMedicion=2312142359, valor=115202, codigoProducto=piedraBola}
+00:56:03.826 [scheduling-1] INFO  c.s.conector.MedicionesService - Medicion creada correctamente: <200,{"id":"65865a53bc18955f197f037c","version":0,"label":"null - null","entity":{"id":"64b75aa3ccffdc432678bc3d","name":"produccion.medicion"},"fechaCreacion":1703303763662,"fechaMedicion":"2312142359","codigoProducto":"piedraBola","valor":115202.0,"valorToneladas":115.2},[connection:"close", vary:"Accept-Encoding", x-xss-protection:"1; mode=block", x-content-type-options:"nosniff", cache-control:"no-store,no-cache,must-revalidate", appversion:"1703302457697", access-control-allow-origin:"https://no-access-allowed.com", set-cookie:"JSESSIONID=node01npdnyoqooec09h463q252plw113.node0; Path=/; Secure", expires:"Thu, 01 Jan 1970 00:00:00 GMT", content-type:"application/json;charset=utf-8", Date:"Sat, 23 Dec 2023 03:56:03 GMT", Transfer-Encoding:"chunked"]>
+00:57:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:57:00.076 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaMediana
+00:57:00.077 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaNatural
+00:57:00.078 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición clarga
+00:57:00.114 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición piedraBola
+00:58:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:58:00.067 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaMediana
+00:58:00.068 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaNatural
+00:58:00.069 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición clarga
+00:58:00.105 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición piedraBola
+00:59:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:59:00.074 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaMediana
+00:59:00.075 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaNatural
+00:59:00.076 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición clarga
+00:59:00.112 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición piedraBola
