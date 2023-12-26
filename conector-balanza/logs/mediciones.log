@@ -1228,3 +1228,41 @@ org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: e
 00:59:00.075 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaNatural
 00:59:00.076 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición clarga
 00:59:00.112 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición piedraBola
+01:00:00.001 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+01:00:00.074 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaMediana
+01:00:00.075 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaNatural
+01:00:00.076 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición clarga
+01:00:00.112 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición piedraBola
+01:01:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+01:01:00.079 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaMediana
+01:01:00.081 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaNatural
+01:01:00.082 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición clarga
+01:01:00.138 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición piedraBola
+01:02:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+01:02:00.077 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaMediana
+01:02:00.078 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaNatural
+01:02:00.079 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición clarga
+01:02:00.119 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición piedraBola
+01:03:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+01:03:00.045 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaMediana
+01:03:00.046 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaNatural
+01:03:00.046 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición clarga
+01:03:00.085 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición piedraBola
+01:04:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+01:04:00.051 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaMediana
+01:04:00.052 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaNatural
+01:04:00.053 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición clarga
+01:04:00.094 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición piedraBola
+01:05:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+01:05:00.075 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaMediana
+01:05:00.075 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaNatural
+01:05:00.076 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición clarga
+01:05:00.112 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición piedraBola
+01:06:00.000 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+01:06:00.048 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaMediana
+01:06:00.048 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arenaNatural
+01:06:00.049 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición clarga
+01:06:00.085 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición piedraBola
+01:06:07.769 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+01:06:07.770 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+01:06:07.779 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

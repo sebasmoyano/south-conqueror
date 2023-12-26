@@ -35,8 +35,8 @@ public class MedicionesService {
         this.restTemplate = restTemplate;
     }
 
-    //@Scheduled(cron = "0 0 9-17 * * *") // cada 1 hora de 9 a 17
-    @Scheduled(cron = "0 * * * * *") // Ejecutar cada minuto
+    @Scheduled(cron = "0 0 9-17 * * *") // cada 1 hora de 9 a 17
+    //@Scheduled(cron = "0 * * * * *") // Ejecutar cada minuto
     public void leerYEnviarMedicion() {
         for (String producto : productos) {
             logger.info("Extrayendo medición {}", producto);
