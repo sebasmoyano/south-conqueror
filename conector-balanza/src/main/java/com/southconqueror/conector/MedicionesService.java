@@ -3,6 +3,7 @@ package com.southconqueror.conector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -10,10 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class MedicionesService {
@@ -25,9 +23,10 @@ public class MedicionesService {
 
     private final static String apiUrl = "https://canteras.slingrs.io/dev/runtime/api/data/produccion.medicion";
 
-
-    private final static List<String> productos = Arrays.asList("arena", "arenaMediana", "arenaNatural", "clarga", "piedraBola");
     private Map<String, Object> ultimasLecturasProductos = new HashMap<>();
+
+    @Value("${app.productos}")
+    private String[] productosArray;
 
     @Autowired
     public MedicionesService(JdbcTemplate jdbcTemplate, RestTemplate restTemplate) {
@@ -35,9 +34,10 @@ public class MedicionesService {
         this.restTemplate = restTemplate;
     }
 
-    @Scheduled(cron = "0 0 9-17 * * *") // cada 1 hora de 9 a 17
-    //@Scheduled(cron = "0 * * * * *") // Ejecutar cada minuto
+    //@Scheduled(cron = "0 0 9-17 * * *") // cada 1 hora de 9 a 17
+    @Scheduled(cron = "0 * * * * *") // Ejecutar cada minuto
     public void leerYEnviarMedicion() {
+        List<String> productos = Arrays.asList(productosArray.clone());
         for (String producto : productos) {
             logger.info("Extrayendo medición {}", producto);
             String ultimaMedicionProductoQuery = "SELECT AUX_IN, ACUM_ FROM " + producto.toUpperCase() + " WHERE ACUM_ != 0 ORDER BY AUX_IN DESC, ACUM_ DESC LIMIT 1";

@@ -1266,3 +1266,78 @@ org.springframework.dao.EmptyResultDataAccessException: Incorrect result size: e
 01:06:07.769 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 01:06:07.770 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 01:06:07.779 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+00:03:05.245 [main] INFO  c.s.conector.MedicionesApplication - Inicializando conector para cinta
+00:03:05.604 [main] INFO  c.s.conector.MedicionesApplication - Starting MedicionesApplication using Java 11.0.21 on smoyano-desktop with PID 455199 (/home/smoyano/myprojects/south-conqueror/conector-balanza/target/classes started by smoyano in /home/smoyano/myprojects/south-conqueror/conector-balanza)
+00:03:05.605 [main] INFO  c.s.conector.MedicionesApplication - No active profile set, falling back to default profiles: default
+00:03:06.100 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:03:06.110 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+00:03:06.464 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:03:06.470 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:03:06.471 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:03:06.471 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+00:03:06.519 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:03:06.519 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 872 ms
+00:03:06.625 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:03:06.917 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:03:06.979 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:03:07.016 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final
+00:03:07.142 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+00:03:07.222 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+00:03:07.317 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:03:07.323 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:03:07.416 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:03:07.632 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:03:07.636 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+00:03:07.639 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+00:03:07.641 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+00:03:07.651 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+00:03:07.652 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+00:03:07.653 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+00:03:07.656 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+00:03:07.656 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-8080"]
+00:03:07.664 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+00:03:07.676 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+00:03:59.697 [main] INFO  c.s.conector.MedicionesApplication - Inicializando conector para cinta
+00:04:00.071 [main] INFO  c.s.conector.MedicionesApplication - Starting MedicionesApplication using Java 11.0.21 on smoyano-desktop with PID 455314 (/home/smoyano/myprojects/south-conqueror/conector-balanza/target/classes started by smoyano in /home/smoyano/myprojects/south-conqueror/conector-balanza)
+00:04:00.071 [main] INFO  c.s.conector.MedicionesApplication - No active profile set, falling back to default profiles: default
+00:04:00.542 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:04:00.559 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11 ms. Found 0 JPA repository interfaces.
+00:04:00.860 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:04:00.866 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:04:00.866 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:04:00.866 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+00:04:00.912 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:04:00.912 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 800 ms
+00:04:01.016 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:04:01.262 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:04:01.309 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:04:01.344 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.4.Final
+00:04:01.434 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+00:04:01.516 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+00:04:01.611 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:04:01.618 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:04:01.687 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:04:01.902 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:04:01.910 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+00:04:01.920 [main] INFO  c.s.conector.MedicionesApplication - Started MedicionesApplication in 2.13 seconds (JVM running for 2.903)
+00:05:14.871 [scheduling-1] INFO  c.s.conector.MedicionesService - Extrayendo medición arena
+00:05:29.796 [scheduling-1] INFO  c.s.conector.MedicionesService - Última medición producto: {AUX_IN=2.312142359E9, ACUM_=285853}
+00:05:29.813 [scheduling-1] INFO  c.s.conector.MedicionesService - Medición enviada a la API: {fechaMedicion=2312142359, valor=285853, codigoProducto=arena}
+00:05:29.842 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+00:05:29.844 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+00:05:29.853 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
