@@ -40,7 +40,7 @@ public class MedicionesService {
         List<String> productos = Arrays.asList(productosArray.clone());
         for (String producto : productos) {
             logger.info("Extrayendo medición {}", producto);
-            String ultimaMedicionProductoQuery = "SELECT AUX_IN, ACUM_ FROM " + producto.toUpperCase() + " WHERE ACUM_ != 0 ORDER BY AUX_IN DESC, ACUM_ DESC LIMIT 1";
+            String ultimaMedicionProductoQuery = "SELECT AUX_IN, ACUM_ FROM " + producto + " WHERE ACUM_ != 0 ORDER BY AUX_IN DESC, ACUM_ DESC LIMIT 1";
             try {
                 Map<String, Object> ultimaMedicionProducto = jdbcTemplate.queryForMap(ultimaMedicionProductoQuery);
                 if (ultimasLecturasProductos.get(producto) == null || !ultimasLecturasProductos.get(producto).equals(ultimaMedicionProducto.get("AUX_IN"))) {
