@@ -34,8 +34,8 @@ public class MedicionesService {
         this.restTemplate = restTemplate;
     }
 
-    @Scheduled(cron = "0 0 9-17 * * *") // cada 1 hora de 9 a 17
-    //@Scheduled(cron = "0 * * * * *") // Ejecutar cada minuto
+    @Scheduled(cron = "0 0 * * * ?") // ejecutar cada 1 hora
+    //@Scheduled(cron = "0 * * * * *") // ejecutar cada minuto
     public void leerYEnviarMedicion() {
         List<String> productos = Arrays.asList(productosArray.clone());
         for (String producto : productos) {
