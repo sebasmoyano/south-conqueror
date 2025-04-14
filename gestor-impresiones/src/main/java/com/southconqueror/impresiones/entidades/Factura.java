@@ -16,6 +16,7 @@ public class Factura {
     private List<DetalleLinea> detalle = new ArrayList<DetalleLinea>();
     private double total;
     private double iva;
+    private double impuestosNacionalesIndirectos;
 
     /**
      * Url a llamar una vez emitido el comprobante.
@@ -76,6 +77,14 @@ public class Factura {
 
     public void setIva(double iva) {
         this.iva = iva;
+    }
+
+    public double getImpuestosNacionalesIndirectos() {
+        return impuestosNacionalesIndirectos;
+    }
+
+    public void setImpuestosNacionalesIndirectos(double impuestosNacionalesIndirectos) {
+        this.impuestosNacionalesIndirectos = impuestosNacionalesIndirectos;
     }
 
     public String getUrlCallback() {

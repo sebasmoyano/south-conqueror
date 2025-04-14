@@ -13,6 +13,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -66,7 +67,15 @@ public class HasarRg3561 extends ImpresoraFiscal {
             final String nroComprobante = abrirFactura(factura);
             agregarDetallesFactura(factura.getDetalle());
             impresora.ImprimirPago("Efectivo", factura.getTotal(), ModosDePago.PAGAR);
-            impresora.ImprimirOtrosTributos(TiposTributos.IMPUESTO_INTERNO_ITEM, "Impuestos internos", 0, 0);
+            // pie de factura con detalles de impuestos
+            Hasar_Funcs.AtributosDeTexto atributosDeTexto = new Hasar_Funcs.AtributosDeTexto();
+            String totalSinImpuestos = NumberFormat.getCurrencyInstance().format(factura.getTotal() - factura.getIva() - factura.getImpuestosNacionalesIndirectos());
+            String iva = NumberFormat.getCurrencyInstance().format(factura.getIva());
+            String impuestosNacionalesIndirectos = NumberFormat.getCurrencyInstance().format(factura.getImpuestosNacionalesIndirectos());
+            impresora.ImprimirTextoGenerico(atributosDeTexto, "Régimen de Transparencia  Fiscal al Consumidor (Ley 27.743)", ModosDeDisplay.DISPLAY_NO);
+            impresora.ImprimirTextoGenerico(atributosDeTexto, "Precio sin impuestos: " + totalSinImpuestos , ModosDeDisplay.DISPLAY_NO);
+            impresora.ImprimirTextoGenerico(atributosDeTexto, "IVA contenido: " + iva , ModosDeDisplay.DISPLAY_NO);
+            impresora.ImprimirTextoGenerico(atributosDeTexto, "Otros Impuestos Nacionales Indirectos: " + impuestosNacionalesIndirectos , ModosDeDisplay.DISPLAY_NO);
             logger.info(String.format("Comprobante generado [%s]", nroComprobante));
             if (!StringUtils.isBlank(nroComprobante)) {
                 // llamar el callback definido
