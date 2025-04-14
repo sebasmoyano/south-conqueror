@@ -67,6 +67,18 @@ public class HasarRg3561 extends ImpresoraFiscal {
             final String nroComprobante = abrirFactura(factura);
             agregarDetallesFactura(factura.getDetalle());
             impresora.ImprimirPago("Efectivo", factura.getTotal(), ModosDePago.PAGAR);
+            try {
+                // pie de factura con detalles de impuestos
+                String totalSinImpuestos = NumberFormat.getCurrencyInstance().format(factura.getTotal() - factura.getIva() - factura.getImpuestosNacionalesIndirectos());
+                String iva = NumberFormat.getCurrencyInstance().format(factura.getIva());
+                String impuestosNacionalesIndirectos = NumberFormat.getCurrencyInstance().format(factura.getImpuestosNacionalesIndirectos());
+                impresora.ImprimirTextoFiscal(new Hasar_Funcs.AtributosDeTexto(), "Régimen de Transparencia  Fiscal al Consumidor (Ley 27.743)");
+                impresora.ImprimirTextoFiscal(new Hasar_Funcs.AtributosDeTexto(), "Precio sin impuestos: " + totalSinImpuestos);
+                impresora.ImprimirTextoFiscal(new Hasar_Funcs.AtributosDeTexto(), "IVA contenido: " + iva);
+                impresora.ImprimirTextoFiscal(new Hasar_Funcs.AtributosDeTexto(), "Otros Impuestos Nacionales Indirectos: " + impuestosNacionalesIndirectos);
+            } catch (Exception e) {
+                logger.error("No se pudo imprimir detalles pie de impresion", e);
+            }
             logger.info(String.format("Comprobante generado [%s]", nroComprobante));
             if (!StringUtils.isBlank(nroComprobante)) {
                 // llamar el callback definido
@@ -86,15 +98,6 @@ public class HasarRg3561 extends ImpresoraFiscal {
         } finally {
             try {
                 cerrarDocumento();
-                // pie de factura con detalles de impuestos
-                Hasar_Funcs.AtributosDeTexto atributosDeTexto = new Hasar_Funcs.AtributosDeTexto();
-                String totalSinImpuestos = NumberFormat.getCurrencyInstance().format(factura.getTotal() - factura.getIva() - factura.getImpuestosNacionalesIndirectos());
-                String iva = NumberFormat.getCurrencyInstance().format(factura.getIva());
-                String impuestosNacionalesIndirectos = NumberFormat.getCurrencyInstance().format(factura.getImpuestosNacionalesIndirectos());
-                impresora.ImprimirTextoGenerico(atributosDeTexto, "Régimen de Transparencia  Fiscal al Consumidor (Ley 27.743)", ModosDeDisplay.DISPLAY_NO);
-                impresora.ImprimirTextoGenerico(atributosDeTexto, "Precio sin impuestos: " + totalSinImpuestos , ModosDeDisplay.DISPLAY_NO);
-                impresora.ImprimirTextoGenerico(atributosDeTexto, "IVA contenido: " + iva , ModosDeDisplay.DISPLAY_NO);
-                impresora.ImprimirTextoGenerico(atributosDeTexto, "Otros Impuestos Nacionales Indirectos: " + impuestosNacionalesIndirectos , ModosDeDisplay.DISPLAY_NO);
             } catch (Exception e) {
                 logger.error("No se pudo cerrar comprobante", e);
             }
