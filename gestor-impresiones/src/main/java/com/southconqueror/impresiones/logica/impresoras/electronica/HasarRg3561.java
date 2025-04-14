@@ -52,7 +52,7 @@ public class HasarRg3561 extends ImpresoraFiscal {
         logger.info("Razón social:                " + rdi.getRazonSocial());
         logger.info("C.U.I.T.:                    " + rdi.getCUIT());
         logger.info("Ingresos Brutos:             " + rdi.getIngBrutos());
-        logger.info("Fecha inicio de actividades: " + rdi.getFechaInicioActividades());
+        logger.info("Fecha in                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           icio de actividades: " + rdi.getFechaInicioActividades());
         logger.info("Número de POS:               " + rdi.getNumeroPos());
         logger.info("Responsabilidad IVA:         " + rdi.getResponsabilidadIVA());
         puntoDeVenta = String.format("%05d", rdi.getNumeroPos());
@@ -67,15 +67,6 @@ public class HasarRg3561 extends ImpresoraFiscal {
             final String nroComprobante = abrirFactura(factura);
             agregarDetallesFactura(factura.getDetalle());
             impresora.ImprimirPago("Efectivo", factura.getTotal(), ModosDePago.PAGAR);
-            // pie de factura con detalles de impuestos
-            Hasar_Funcs.AtributosDeTexto atributosDeTexto = new Hasar_Funcs.AtributosDeTexto();
-            String totalSinImpuestos = NumberFormat.getCurrencyInstance().format(factura.getTotal() - factura.getIva() - factura.getImpuestosNacionalesIndirectos());
-            String iva = NumberFormat.getCurrencyInstance().format(factura.getIva());
-            String impuestosNacionalesIndirectos = NumberFormat.getCurrencyInstance().format(factura.getImpuestosNacionalesIndirectos());
-            impresora.ImprimirTextoGenerico(atributosDeTexto, "Régimen de Transparencia  Fiscal al Consumidor (Ley 27.743)", ModosDeDisplay.DISPLAY_NO);
-            impresora.ImprimirTextoGenerico(atributosDeTexto, "Precio sin impuestos: " + totalSinImpuestos , ModosDeDisplay.DISPLAY_NO);
-            impresora.ImprimirTextoGenerico(atributosDeTexto, "IVA contenido: " + iva , ModosDeDisplay.DISPLAY_NO);
-            impresora.ImprimirTextoGenerico(atributosDeTexto, "Otros Impuestos Nacionales Indirectos: " + impuestosNacionalesIndirectos , ModosDeDisplay.DISPLAY_NO);
             logger.info(String.format("Comprobante generado [%s]", nroComprobante));
             if (!StringUtils.isBlank(nroComprobante)) {
                 // llamar el callback definido
@@ -95,6 +86,15 @@ public class HasarRg3561 extends ImpresoraFiscal {
         } finally {
             try {
                 cerrarDocumento();
+                // pie de factura con detalles de impuestos
+                Hasar_Funcs.AtributosDeTexto atributosDeTexto = new Hasar_Funcs.AtributosDeTexto();
+                String totalSinImpuestos = NumberFormat.getCurrencyInstance().format(factura.getTotal() - factura.getIva() - factura.getImpuestosNacionalesIndirectos());
+                String iva = NumberFormat.getCurrencyInstance().format(factura.getIva());
+                String impuestosNacionalesIndirectos = NumberFormat.getCurrencyInstance().format(factura.getImpuestosNacionalesIndirectos());
+                impresora.ImprimirTextoGenerico(atributosDeTexto, "Régimen de Transparencia  Fiscal al Consumidor (Ley 27.743)", ModosDeDisplay.DISPLAY_NO);
+                impresora.ImprimirTextoGenerico(atributosDeTexto, "Precio sin impuestos: " + totalSinImpuestos , ModosDeDisplay.DISPLAY_NO);
+                impresora.ImprimirTextoGenerico(atributosDeTexto, "IVA contenido: " + iva , ModosDeDisplay.DISPLAY_NO);
+                impresora.ImprimirTextoGenerico(atributosDeTexto, "Otros Impuestos Nacionales Indirectos: " + impuestosNacionalesIndirectos , ModosDeDisplay.DISPLAY_NO);
             } catch (Exception e) {
                 logger.error("No se pudo cerrar comprobante", e);
             }

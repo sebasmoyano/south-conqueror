@@ -526,3 +526,13 @@ INFO: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
 Apr 13, 2025 11:48:30 PM hfl.argentina.ProtocolHTTP sendCommand
 SEVERE: Connection refused (Connection refused)
+Apr 14, 2025 12:04:51 AM hfl.argentina.ProtocolHTTP sendCommand
+INFO: Iniciando conexión: 127.0.0.1:80
+Apr 14, 2025 12:04:51 AM hfl.argentina.ProtocolHTTP sendCommand
+INFO: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ConsultarEstado>
+<CodigoComprobante>NoDocumento</CodigoComprobante>
+</ConsultarEstado>
+
+Apr 14, 2025 12:04:51 AM hfl.argentina.ProtocolHTTP sendCommand
+SEVERE: Connection refused (Connection refused)
