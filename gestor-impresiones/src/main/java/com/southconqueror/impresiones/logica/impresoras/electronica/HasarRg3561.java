@@ -66,8 +66,8 @@ public class HasarRg3561 extends ImpresoraFiscal {
             cargarDatosCliente(factura.getComprador());
             final String nroComprobante = abrirFactura(factura);
             agregarDetallesFactura(factura.getDetalle());
-            imprimirInfoConsumidor(factura);
             impresora.ImprimirPago("Efectivo", factura.getTotal(), ModosDePago.PAGAR);
+            imprimirInfoConsumidor(factura);
             logger.info(String.format("Comprobante generado [%s]", nroComprobante));
             if (!StringUtils.isBlank(nroComprobante)) {
                 // llamar el callback definido
@@ -367,10 +367,10 @@ public class HasarRg3561 extends ImpresoraFiscal {
             String totalSinImpuestos = NumberFormat.getCurrencyInstance().format(factura.getTotal() - factura.getIva() - factura.getImpuestosNacionalesIndirectos());
             String iva = NumberFormat.getCurrencyInstance().format(factura.getIva());
             String impuestosNacionalesIndirectos = NumberFormat.getCurrencyInstance().format(factura.getImpuestosNacionalesIndirectos());
-            impresora.ImprimirTextoFiscal(new Hasar_Funcs.AtributosDeTexto(), "Régimen de Transparencia  Fiscal al Consumidor (Ley 27.743)");
-            impresora.ImprimirTextoFiscal(new Hasar_Funcs.AtributosDeTexto(), "Precio sin impuestos: " + totalSinImpuestos);
-            impresora.ImprimirTextoFiscal(new Hasar_Funcs.AtributosDeTexto(), "IVA contenido: " + iva);
-            impresora.ImprimirTextoFiscal(new Hasar_Funcs.AtributosDeTexto(), "Otros Impuestos Nacionales Indirectos: " + impuestosNacionalesIndirectos);
+            impresora.ImprimirTextoGenerico(new Hasar_Funcs.AtributosDeTexto(), "Régimen de Transparencia  Fiscal al Consumidor (Ley 27.743)");
+            impresora.ImprimirTextoGenerico(new Hasar_Funcs.AtributosDeTexto(), "Precio sin impuestos: " + totalSinImpuestos);
+            impresora.ImprimirTextoGenerico(new Hasar_Funcs.AtributosDeTexto(), "IVA contenido: " + iva);
+            impresora.ImprimirTextoGenerico(new Hasar_Funcs.AtributosDeTexto(),"Otros Impuestos Nacionales Indirectos: " + impuestosNacionalesIndirectos);
         } catch (Exception e) {
             logger.error("No se pudo imprimir detalles pie de impresion", e);
         }
