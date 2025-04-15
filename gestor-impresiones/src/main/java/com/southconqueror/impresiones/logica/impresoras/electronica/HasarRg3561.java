@@ -66,8 +66,8 @@ public class HasarRg3561 extends ImpresoraFiscal {
             cargarDatosCliente(factura.getComprador());
             final String nroComprobante = abrirFactura(factura);
             agregarDetallesFactura(factura.getDetalle());
+            imprimirInfoConsumidor(factura);
             impresora.ImprimirPago("Efectivo", factura.getTotal(), ModosDePago.PAGAR);
-            imprimirPieFactura(factura);
             logger.info(String.format("Comprobante generado [%s]", nroComprobante));
             if (!StringUtils.isBlank(nroComprobante)) {
                 // llamar el callback definido
@@ -361,7 +361,7 @@ public class HasarRg3561 extends ImpresoraFiscal {
         impresora.ImprimirTextoGenerico(atributosDeTexto, linea, ModosDeDisplay.DISPLAY_NO);
     }
 
-    private void imprimirPieFactura(Factura factura) {
+    private void imprimirInfoConsumidor(Factura factura) {
         try {
             // pie de factura con detalles de impuestos
             String totalSinImpuestos = NumberFormat.getCurrencyInstance().format(factura.getTotal() - factura.getIva() - factura.getImpuestosNacionalesIndirectos());
